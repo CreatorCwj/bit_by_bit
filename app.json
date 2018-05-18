@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/record/record",
+    "pages/login/login",
+    "pages/time/time",
+    "pages/we/we"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#b9d3ee",
+    "navigationBarTitleText": "对象",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "borderStyle": "black",
+    "position": "bottom",
+    "backgroundColor": "#ffffff",
+    "color": "#969696",
+    "selectedColor": "#b9d3ee",
+    "list": [
+      {
+        "pagePath": "pages/time/time",
+        "text": "岁月",
+        "iconPath": "resources/images/time_unselect.png",
+        "selectedIconPath": "resources/images/time_select.png"
+      },
+      {
+        "pagePath": "pages/record/record",
+        "text": "点滴",
+        "iconPath": "resources/images/record_unselect.png",
+        "selectedIconPath": "resources/images/record_select.png"
+      },
+      {
+        "pagePath": "pages/we/we",
+        "text": "我们",
+        "iconPath": "resources/images/we_unselect.png",
+        "selectedIconPath": "resources/images/we_select.png"
+      }
+    ]
+  }
+}

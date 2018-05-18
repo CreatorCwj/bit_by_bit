@@ -1,0 +1,137 @@
+/* pages/time/time.wxss */
+
+page {
+  height: 100%;
+}
+
+.time_container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.top_back {
+  width: 100%;
+  height: 38%;
+}
+
+.content_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0;
+  position: absolute;
+  box-sizing: border-box;
+  padding-left: 46rpx;
+  padding-right: 46rpx;
+}
+
+.image_outer_container {
+  width: 100%;
+  height: 73%;
+  padding: 23rpx;
+  box-sizing: border-box;
+  background-color: white;
+  box-shadow: 0 0 10rpx #f9f5fc;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.image_container {
+  width: 100%;
+  height: 83%;
+  position: relative;
+}
+
+.photo_image {
+  width: 100%;
+  height: 100%;
+}
+
+.take_photo_image {
+  width: 55rpx;
+  height: 55rpx;
+  position: absolute;
+  top: 19rpx;
+  right: 19rpx;
+}
+
+.days_container {
+  width: 100%;
+  height: 17%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.days_heart_left {
+  width: 59rpx;
+  height: 59rpx;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+}
+
+.days_heart_right {
+  width: 59rpx;
+  height: 59rpx;
+  transform: rotate(90deg);
+  transform-origin: center center;
+}
+
+.text_container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.normal_text {
+  color: #c0bcbd;
+  font-size: 33rpx;
+}
+
+.days_text {
+  color: #6ebedf;
+  font-size: 57rpx;
+  margin: 0rpx 20rpx 0rpx 20rpx;
+}
+
+.buttons_container {
+  width: 100%;
+  height: 27%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.button_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button_img {
+  width: 139rpx;
+  height: 139rpx;
+  border-radius: 50%;
+  box-sizing: border-box;
+  padding: 23%;
+  margin-bottom: 18rpx;
+  box-shadow: 0 0 5rpx #768899;
+  border: 1rpx solid white;
+}
+
+.btn_chinese_text {
+  color: #6ebedf;
+  font-size: 28rpx;
+  margin-bottom: 2rpx;
+}
+
+.btn_english_text {
+  color: #c0bcbd;
+  font-size: 20rpx;
+}

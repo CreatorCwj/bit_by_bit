@@ -1,0 +1,25 @@
+<!--pages/login/login.wxml-->
+<view class='login-container'>
+  <image class="userinfo-avatar" src="{{avatarUrl}}" mode='aspectFill' />
+  <text class="userinfo-nickname">{{nickName}}</text>
+  <view class='heart-row-container'>
+    <view class='heart-column1-container'>
+      <image class='left-top-heart' src='../../resources/images/heart.png' mode='aspectFit'></image>
+      <image class='left-middle-heart' src='../../resources/images/heart.png' mode='aspectFit'></image>
+      <image class='left-bottom-heart' src='../../resources/images/heart.png' mode='aspectFit'></image>
+    </view>
+    <view class='heart-column2-container'>
+      <image class='right-top-heart' src='../../resources/images/heart.png' mode='aspectFit'></image>
+      <image class='right-middle-heart' src='../../resources/images/heart.png' mode='aspectFit'></image>
+      <image class='right-bottom-heart' src='../../resources/images/heart.png' mode='aspectFit'></image>
+    </view>
+  </view>
+  <button class='share-btn-normal' open-type='share' hover-class='share-btn-click' disabled='{{disabled}}'>邀请另一半</button>
+</view>
+<view class='auth-view' hidden='{{!showModal}}'>
+  <view class='modal-container'>
+    <view class='modal-text'>微信授权</view>
+    <view class='tip-text'>需要获取您的公开信息（昵称、头像等）</view>
+    <button class='modal-btn' bindtap='openAuth' type='default' size='default' open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权</button>
+  </view>
+</view>

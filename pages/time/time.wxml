@@ -1,0 +1,38 @@
+<!--pages/time/time.wxml-->
+<view class='time_container'>
+  <view class='top_back,app-bg-color' />
+  <view class='content_container'>
+    <view class='image_outer_container'>
+      <view class='image_container'>
+        <image class='photo_image' src='{{wallPaperUrl}}' mode='aspectFill' />
+        <image class='take_photo_image' src='../../resources/images/take_photo.png' mode='aspectFit' bindtap='selectWallPaper'/>
+      </view>
+      <view class='days_container'>
+        <image class='days_heart_left' src='../../resources/images/main_color_heart.png' />
+        <picker class='text_container' mode="date" value="{{defaultDate}}" end="{{maxDate}}" bindchange="selectDate">
+          <text class='normal_text'>{{daysPrefix}}</text>
+          <text class='days_text' hidden='{{!hasDays}}'>{{days}}天</text>
+          <text class='normal_text' hidden='{{!hasDays}}'>啦！！！</text>
+        </picker>
+        <image class='days_heart_right' src='../../resources/images/main_color_heart.png' />
+      </view>
+    </view>
+    <view class='buttons_container'>
+      <view class='button_container'>
+        <image class='button_img,app-bg-color' src='../../resources/images/past_icon.png' mode='aspectFit' />
+        <text class='btn_chinese_text'>纪念日</text>
+        <text class='btn_english_text'>Past</text>
+      </view>
+      <view class='button_container'>
+        <image class='button_img,app-bg-color' src='../../resources/images/first_icon.png' mode='aspectFit' />
+        <text class='btn_chinese_text'>第一次</text>
+        <text class='btn_english_text'>First</text>
+      </view>
+      <view class='button_container'>
+        <image class='button_img,app-bg-color' src='../../resources/images/future_icon.png' mode='aspectFit' />
+        <text class='btn_chinese_text'>未来</text>
+        <text class='btn_english_text'>Future</text>
+      </view>
+    </view>
+  </view>
+</view>

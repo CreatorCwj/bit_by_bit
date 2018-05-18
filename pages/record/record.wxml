@@ -1,0 +1,10 @@
+<!--pages/record/record.wxml-->
+<view class='item-container'>
+  <text class='date'>周五\n2018.06.04</text>
+  <view class='timeline-container'>
+    <view class='line' />
+    <view class='emotion' />
+  </view>
+  <view class='arrow' />
+  <view class='content-container'></view>
+</view>
