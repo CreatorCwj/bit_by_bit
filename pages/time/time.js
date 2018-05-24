@@ -20,7 +20,7 @@ Page({
     this.setData({
       wallPaperUrl: cacheUrl
     })
-    this.loadData()
+    wx.startPullDownRefresh()
   },
 
   onPullDownRefresh: function () {

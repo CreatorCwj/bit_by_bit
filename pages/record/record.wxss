@@ -1,23 +1,90 @@
 /* pages/record/record.wxss */
 
 page {
+  background-color: #eaf1f9;
+}
+
+.tip-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 35%;
+}
+
+.tip-text {
+  font-size: 40rpx;
+  text-align: center;
+}
+
+.tip-image {
+  width: 168rpx;
+  align-self: flex-end;
+  margin-right: 170rpx;
+  margin-top: 50rpx;
+}
+
+.add-image {
+  width: 121rpx;
+  height: 121rpx;
   background-color: #b9d3ee;
+  border-radius: 50%;
+  box-sizing: border-box;
+  padding: 35rpx;
+  box-shadow: 0 0 5rpx #768899;
+  border: 1rpx solid white;
+  position: fixed;
+  right: 31rpx;
+  bottom: 17rpx;
+}
+
+.record-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.swiper {
+  width: 100%;
+  height: 395rpx;
+  position: relative;
+  margin-bottom: 30rpx;
+}
+
+.swiper-title-layer {
+  width: 100%;
+  height: 85rpx;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(185, 211, 238, 0.5);
+  font-size: 33rpx;
+  color: white;
+  padding: 10rpx;
+  text-align: center;
+}
+
+.swiper-image {
+  width: 100%;
+  height: 100%;
 }
 
 .item-container {
-  height: 250rpx;
+  width: 100%;
+  height: 194rpx;
   display: flex;
   flex-direction: row;
 }
 
 .date {
-  font-size: 28rpx;
+  font-size: 24rpx;
   text-align: center;
-  margin: 50rpx 10rpx 0 20rpx;
+  margin: 48rpx 6rpx 0 16rpx;
 }
 
 .timeline-container {
-  width: 26rpx;
+  width: 21rpx;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -32,26 +99,70 @@ page {
 }
 
 .emotion {
-  width: 26rpx;
-  height: 26rpx;
+  width: 21rpx;
+  height: 21rpx;
   border-radius: 50%;
   background-color: yellow;
   position: absolute;
-  top: 50rpx;
+  top: 48rpx;
 }
 
 .arrow {
   width: 0;
   height: 0;
-  border-top: 25rpx solid transparent;
-  border-right: 50rpx solid white;
-  border-bottom: 25rpx solid transparent;
-  margin-top: 38rpx;
+  border-top: 18rpx solid transparent;
+  border-right: 36rpx solid white;
+  border-bottom: 18rpx solid transparent;
+  margin-top: 40rpx;
 }
 
 .content-container {
   flex: 1;
   border-radius: 30rpx;
   background-color: white;
-  margin: 10rpx 20rpx 10rpx 0;
+  margin: 8rpx 16rpx 8rpx 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.item-img {
+  width: 178rpx;
+  height: 178rpx;
+  border-radius: 30rpx;
+}
+
+.info-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 18rpx 8rpx 18rpx 18rpx;
+  justify-content: space-between;
+}
+
+.item-publisher {
+  font-size: 28rpx;
+  color: black;
+  font-weight: bold;
+}
+
+.item-title {
+  font-size: 28rpx;
+  color: black;
+}
+
+.place-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.locate-icon {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 8rpx;
+}
+
+.item-place {
+  font-size: 22rpx;
+  color: #bfd5ed;
 }
