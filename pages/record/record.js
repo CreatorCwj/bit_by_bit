@@ -26,7 +26,6 @@ Page({
     currentPageNo = 1//reset pageNo
     wx.showNavigationBarLoading()
     var that = this
-    var obj = AV.Object.createWithoutData('Lovers', AV.User.current().toJSON().lovers.objectId)
     AV.Cloud.run('getDataList', {
       objId: AV.User.current().toJSON().lovers.objectId,
       important: true,
@@ -53,7 +52,6 @@ Page({
     ++currentPageNo//add pageNo
     wx.showNavigationBarLoading()
     var that = this
-    var obj = AV.Object.createWithoutData('Lovers', AV.User.current().toJSON().lovers.objectId)
     AV.Cloud.run('getDataList', {
       objId: AV.User.current().toJSON().lovers.objectId,
       important: false,
