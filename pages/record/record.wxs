@@ -1,0 +1,61 @@
+var getDateString = function (dateString) {
+  if (!dateString) return ''
+  var date = getDate(dateString)
+  return getChineseWeek(date.getDay()) + '\n' + getFormatDate(date)
+}
+
+//获取星期几信息
+function getChineseWeek(day) {
+  switch (day) {
+    case 0:
+      return '周日'
+    case 1:
+      return '周一'
+    case 2:
+      return '周二'
+    case 3:
+      return '周三'
+    case 4:
+      return '周四'
+    case 5:
+      return '周五'
+    case 6:
+      return '周六'
+  }
+  return ''
+}
+
+//获取字符串格式的年-月-日
+function getFormatDate(date) {
+  if (!date) return ''
+  var month = ((date.getMonth() + 1) >= 10) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))
+  var day = date.getDate() >= 10 ? date.getDate() : ('0' + date.getDate())
+  return date.getFullYear() + '.' + month + '.' + day
+}
+
+//获取第一张图片或默认图片
+var getImageUrl = function (record) {
+  if (!record || !record.images || record.images.length <= 0 || !record.images[0] || !record.images[0].url) {
+    return '../../resources/images/default_image.png'
+  }
+  return record.images[0].url
+}
+
+//获取心情的颜色
+var getEmotionColor = function (emotionNum) {
+  switch (emotionNum) {
+    case 1:
+      return 'blue'
+    case 2:
+      return 'yellow'
+    case 3:
+      return 'pink'
+  }
+  return 'white'
+}
+
+module.exports = {
+  getDateString: getDateString,
+  getImageUrl: getImageUrl,
+  getEmotionColor: getEmotionColor
+}

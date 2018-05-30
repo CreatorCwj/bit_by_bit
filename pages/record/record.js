@@ -1,5 +1,6 @@
 // pages/record/record.js
 const AV = require('../../libs/av-weapp-min.js')
+const Util = require('../../utils/util.js')
 var currentPageNo = 1
 
 Page({

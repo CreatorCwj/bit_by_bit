@@ -90,13 +90,13 @@ page {
 
 .normal_text {
   color: #c0bcbd;
-  font-size: 33rpx;
+  font-size: 28rpx;
 }
 
 .days_text {
   color: #6ebedf;
   font-size: 57rpx;
-  margin: 0rpx 20rpx 0rpx 20rpx;
+  margin: 0rpx 15rpx 0rpx 15rpx;
 }
 
 .buttons_container {

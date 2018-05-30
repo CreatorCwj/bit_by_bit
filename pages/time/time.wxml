@@ -12,7 +12,7 @@
         <picker class='text_container' mode="date" value="{{defaultDate}}" end="{{maxDate}}" bindchange="selectDate">
           <text class='normal_text'>{{daysPrefix}}</text>
           <text class='days_text' hidden='{{!hasDays}}'>{{days}}天</text>
-          <text class='normal_text' hidden='{{!hasDays}}'>啦！！！</text>
+          <text class='normal_text' hidden='{{!hasDays}}'>不离不弃</text>
         </picker>
         <image class='days_heart_right' src='../../resources/images/main_color_heart.png' />
       </view>

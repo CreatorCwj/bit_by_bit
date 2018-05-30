@@ -1,35 +1,36 @@
 <!--pages/record/record.wxml-->
+<wxs src='./record.wxs' module="Util" />
 <view class='tip-container' hidden='{{(listItems&&listItems.length!=0)||(swiperItems&&swiperItems.length!=0)}}'>
   <view class='tip-text,app-text-color'>快来添加你们的爱情史吧~~</view>
   <image class='tip-image' src='../../resources/images/record_add_tip.png' mode='widthFix' />
 </view>
 <view class='record-container'>
   <swiper class='swiper' hidden='{{!swiperItems||swiperItems.length==0}}' indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3500}}" circular="{{true}}" indicator-color="#a9bbd3" indicator-active-color="#fff">
-    <block wx:for="{{swiperItems}}" wx:key="id">
+    <block wx:for="{{swiperItems}}" wx:key="objectId">
       <swiper-item class='swiper-item-container'>
-        <image src="{{item.url}}" class="swiper-image" mode='aspectFill' />
+        <image src="{{Util.getImageUrl(item)}}" class="swiper-image" mode='aspectFill' />
         <view class='swiper-title-layer'>{{item.title}}</view>
       </swiper-item>
     </block>
   </swiper>
-  <block wx:for="{{listItems}}" wx:key="id">
+  <block wx:for="{{listItems}}" wx:key="objectId">
     <view class='item-container'>
-      <text class='date'>{{item.date}}</text>
+      <text class='date'>{{Util.getDateString(item.date)}}</text>
       <view class='timeline-container'>
         <view class='line' />
-        <view class='emotion' />
+        <view class='emotion' style='background-color:{{Util.getEmotionColor(item.emotion)}}' />
       </view>
       <view class='arrow' />
       <view class='content-container'>
         <view class='info-container'>
-          <view class='item-publisher'>{{item.publisher}}：</view>
+          <view class='item-publisher'>{{item.publisher.customName?item.publisher.customName:item.publisher.nickName}}：</view>
           <view class='item-title'>{{item.title}}</view>
           <view class='place-container'>
             <image class='locate-icon' src='../../resources/images/locate.png' mode='aspectFit' />
             <view class='item-place'>{{item.place}}</view>
           </view>
         </view>
-        <image class='item-img' src='{{item.url}}' mode='aspectFill' />
+        <image class='item-img' src='{{Util.getImageUrl(item)}}' mode='aspectFill' />
       </view>
     </view>
   </block>

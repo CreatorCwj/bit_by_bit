@@ -89,7 +89,7 @@ Page({
       var dateSet = res.days || res.days == 0
       that.setData({
         wallPaperUrl: res.url ? res.url : cacheUrl,
-        daysPrefix: dateSet ? '在一起' : '快点击设置你们的第一天吧',
+        daysPrefix: dateSet ? '相随相伴' : '快点击设置你们的第一天吧',
         days: dateSet ? res.days : '',
         hasDays: dateSet
       })

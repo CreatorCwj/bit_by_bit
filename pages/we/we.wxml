@@ -1,2 +1,11 @@
 <!--pages/we/we.wxml-->
-<text>pages/we/we.wxml</text>
+<view class='container'>
+  <view class='c-container'>
+    <view class='holder'>dadadadaddadaddadasddasdadadadaadadad</view>
+    <view class='holder3'>adsaadad</view>
+    <view class='holder3'>adsaadad</view>
+    <view class='holder3'>adsaadad</view>
+  </view>
+  <view class='holder2'>adsaadad</view>
+  <!-- <view class='holder3'>adsaadad</view> -->
+</view>
