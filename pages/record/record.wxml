@@ -35,4 +35,4 @@
     </view>
   </block>
 </view>
-<image class='add-image' src='../../resources/images/record_add.png' mode='aspectFit' />
+<image class='add-image' src='../../resources/images/record_add.png' mode='aspectFit' bindtap='addRecord' />

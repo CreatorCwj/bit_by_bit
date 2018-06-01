@@ -73,5 +73,11 @@ Page({
       wx.hideNavigationBarLoading()
       Util.showMsg('数据请求失败')
     })
+  },
+
+  addRecord: function () {
+    wx.navigateTo({
+      url: '/pages/newUpdRecord/newUpdRecord'
+    })
   }
 })

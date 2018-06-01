@@ -1,11 +1,2 @@
 <!--pages/we/we.wxml-->
-<view class='container'>
-  <view class='c-container'>
-    <view class='holder'>dadadadaddadaddadasddasdadadadaadadad</view>
-    <view class='holder3'>adsaadad</view>
-    <view class='holder3'>adsaadad</view>
-    <view class='holder3'>adsaadad</view>
-  </view>
-  <view class='holder2'>adsaadad</view>
-  <!-- <view class='holder3'>adsaadad</view> -->
-</view>
+<image class='image' src='../../resources/images/first_icon_blue.png'/>

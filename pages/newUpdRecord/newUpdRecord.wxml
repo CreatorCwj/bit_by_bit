@@ -1,0 +1,51 @@
+<!--pages/newUpdRecord/newUpdRecord.wxml-->
+<view class='container'>
+  <view class='column-line' />
+  <view class='column-container'>
+    <view class='header-container'>
+      <text class='header-text' space='emsp'>我们的\n故 事</text>
+      <view class='header-line' />
+    </view>
+    <view class='date-place-emotion-container'>
+      <view class='date-place-container'>
+        <view class='dp-row-container'>
+          <image class='dp-image' src='../../resources/images/calendar.png' mode='aspectFit' />
+          <text class='dp-text' space='emsp'>2018.02.28 周日</text>
+        </view>
+        <view class='dp-row-container'>
+          <image class='dp-image' src='../../resources/images/locate_white.png' mode='aspectFit' />
+          <input class='place-input' placeholder-class='input-placeholder' maxlength='-1' placeholder='发生在哪里呢~' />
+        </view>
+      </view>
+      <view class='emotion-view,happy-color'>好开森</view>
+      <view class='emotion-view,normal-color'>一般般</view>
+      <view class='emotion-view,sad-color'>好桑心</view>
+    </view>
+    <textarea class='content-area' placeholder-class='area-placeholder' maxlength='-1' auto-height='{{false}}' placeholder='发生了些什么呢~' />
+    <view class='images-container'>
+      <image class='add-image' src='../../resources/images/record_add_blue.png' mode='aspectFit' />
+      <image class='add-image' src='../../resources/images/record_add_blue.png' mode='aspectFit' />
+      <image class='add-image' src='../../resources/images/record_add_blue.png' mode='aspectFit' />
+    </view>
+    <view class='switch-container'>
+      <image class='switch-icon' src='../../resources/images/first_icon_blue.png' mode='aspectFit' />
+      <view class='switch-text'>第一次</view>
+      <switch class='switch' type='switch' color='#9bcae6' checked='{{false}}' />
+    </view>
+    <view class='switch-tip' hidden='{{false}}'>设置"第一次"事件，会自动添加到"第一次"记录中哦~</view>
+    <view class='first-content-container' hidden='{{true}}'>
+      <view class='first-title'>标题：</view>
+      <input class='first-input' placeholder-class='first-input-placeholder' maxlength='10' placeholder='最多不能超过10个字~' />
+    </view>
+    <view class='switch-container'>
+      <image class='switch-icon' src='../../resources/images/important_icon.png' mode='aspectFit' />
+      <view class='switch-text'>重要事件</view>
+      <switch class='switch' type='switch' color='#9bcae6' checked='{{false}}' />
+    </view>
+    <view class='switch-tip'>标为重要事件，会在列表页的轮播图里展示哦~</view>
+    <view class='btn-container'>
+      <view class='btn'>重置</view>
+      <view class='btn'>完成</view>
+    </view>
+  </view>
+</view>
