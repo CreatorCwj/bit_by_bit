@@ -1,12 +1,7 @@
 /* pages/we/we.wxss */
 
 .image {
-  margin-left: 200rpx;
-  width: 100rpx;
-  height: 100rpx;
-  position: relative;
-  left: -100rpx;
-  border-right: 100rpx solid transparent;
-  filter: drop-shadow(100rpx 0 0 red);
-  overflow: hidden;
+  width: 28rpx;
+  height: 28rpx;
+  background-color: red;
 }

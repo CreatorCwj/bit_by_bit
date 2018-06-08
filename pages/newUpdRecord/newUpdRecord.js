@@ -1,66 +1,73 @@
+const Util = require('../../utils/util.js')
+
 // pages/newUpdRecord/newUpdRecord.js
+var txtDisAnimation = wx.createAnimation({
+  transformOrigin: "50% 50%",
+  duration: 400,
+  timingFunction: "linear",
+  delay: 0
+}).rotateY(-180).opacity(0).step().export();
+var emoAppAnimation = wx.createAnimation({
+  transformOrigin: "50% 50%",
+  duration: 400,
+  timingFunction: "linear",
+  delay: 0
+}).rotateY(-180).opacity(1).step().export();
+var txtAppAnimation = wx.createAnimation({
+  transformOrigin: "50% 50%",
+  duration: 400,
+  timingFunction: "linear",
+  delay: 0
+}).rotateY(0).opacity(1).step().export();
+var emoDisAnimation = wx.createAnimation({
+  transformOrigin: "50% 50%",
+  duration: 400,
+  timingFunction: "linear",
+  delay: 0
+}).rotateY(0).opacity(0).step().export();
+var emotionType = null;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    txtDisAnimation: txtDisAnimation,
+    emoAppAnimation: emoAppAnimation,
+    txtAppAnimation: txtAppAnimation,
+    emoDisAnimation: emoDisAnimation,
+    emotionType: null,
+    selectedDate: null,
+    place: null,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  testAnimation: function (event) {
+    emotionType = event.currentTarget.dataset.emotionType
+    this.setData({
+      emotionType: emotionType
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  //选择日期
+  selectDate: function (event) {
+    var date = Util.getZeroDate(event.detail.value)
+    this.setData({
+      selectedDate: date,
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  //输入地点
+  placeChange: function (event) {
+    this.setData({
+      place: event.detail.value
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  //输入内容
+  contentChange: function (event) {
+    this.setData({
+      content: event.detail.value
+    })
   }
 })

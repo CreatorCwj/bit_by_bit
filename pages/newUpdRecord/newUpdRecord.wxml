@@ -1,4 +1,6 @@
 <!--pages/newUpdRecord/newUpdRecord.wxml-->
+<wxs src='./newUpdRecord.wxs' module="ModuleUtil" />
+<wxs src='../../utils/util.wxs' module="Util" />
 <view class='container'>
   <view class='column-line' />
   <view class='column-container'>
@@ -10,18 +12,27 @@
       <view class='date-place-container'>
         <view class='dp-row-container'>
           <image class='dp-image' src='../../resources/images/calendar.png' mode='aspectFit' />
-          <text class='dp-text' space='emsp'>2018.02.28 周日</text>
+          <picker class='dp-text-picker' style='color:{{ModuleUtil.getDateFontColor(selectedDate)}}' mode="date" value="{{Util.getCurrentDate()}}" end="{{Util.getCurrentDate()}}" bindchange="selectDate">{{ModuleUtil.getSelectedDateStr(selectedDate)}}</picker>
         </view>
         <view class='dp-row-container'>
           <image class='dp-image' src='../../resources/images/locate_white.png' mode='aspectFit' />
-          <input class='place-input' placeholder-class='input-placeholder' maxlength='-1' placeholder='发生在哪里呢~' />
+          <input class='place-input' placeholder-class='input-placeholder' maxlength='-1' placeholder='发生在哪里呢~' bindinput='placeChange'/>
         </view>
       </view>
-      <view class='emotion-view,happy-color'>好开森</view>
-      <view class='emotion-view,normal-color'>一般般</view>
-      <view class='emotion-view,sad-color'>好桑心</view>
+      <view class='emotion-container' bindtap='testAnimation' data-emotion-type='3'>
+        <text class='emotion-view' animation='{{emotionType==null?null:emotionType==3?txtDisAnimation:txtAppAnimation}}'>开森\n的\n一天</text>
+        <image class='emotion-image,happy-color' src='../../resources/images/emotion_happy.png' animation='{{emotionType==null?null:emotionType==3?emoAppAnimation:emoDisAnimation}}' mode='aspectFit' />
+      </view>
+      <view class='emotion-container' bindtap='testAnimation' data-emotion-type='2'>
+        <text class='emotion-view' animation='{{emotionType==null?null:emotionType==2?txtDisAnimation:txtAppAnimation}}'>普通\n的\n一天</text>
+        <image class='emotion-image,normal-color' src='../../resources/images/emotion_normal.png' animation='{{emotionType==null?null:emotionType==2?emoAppAnimation:emoDisAnimation}}' mode='aspectFit' />
+      </view>
+      <view class='emotion-container' bindtap='testAnimation' data-emotion-type='1'>
+        <text class='emotion-view' animation='{{emotionType==null?null:emotionType==1?txtDisAnimation:txtAppAnimation}}'>桑心\n的\n一天</text>
+        <image class='emotion-image,sad-color' src='../../resources/images/emotion_sad.png' animation='{{emotionType==null?null:emotionType==1?emoAppAnimation:emoDisAnimation}}' mode='aspectFit' />
+      </view>
     </view>
-    <textarea class='content-area' placeholder-class='area-placeholder' maxlength='-1' auto-height='{{false}}' placeholder='发生了些什么呢~' />
+    <textarea class='content-area' placeholder-class='area-placeholder' maxlength='-1' auto-height='{{false}}' placeholder='发生了些什么呢~' bindinput='contentChange'/>
     <view class='images-container'>
       <image class='add-image' src='../../resources/images/record_add_blue.png' mode='aspectFit' />
       <image class='add-image' src='../../resources/images/record_add_blue.png' mode='aspectFit' />

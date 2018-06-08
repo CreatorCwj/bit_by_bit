@@ -1,2 +1,2 @@
 <!--pages/we/we.wxml-->
-<image class='image' src='../../resources/images/first_icon_blue.png'/>
+<image class='image' src='../../resources/images/locate.png' mode='aspectFit' />

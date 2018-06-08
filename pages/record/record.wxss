@@ -168,8 +168,7 @@ page {
 }
 
 .locate-icon {
-  width: 28rpx;
-  height: 28rpx;
+  width: 40rpx;
   margin-right: 8rpx;
 }
 

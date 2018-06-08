@@ -11,8 +11,6 @@ Page({
     daysPrefix: '',
     days: '',
     hasDays: false,
-    defaultDate: new Date(),
-    maxDate: new Date()
   },
 
   onLoad: function (options) {
@@ -30,11 +28,7 @@ Page({
   selectDate: function (event) {
     wx.showNavigationBarLoading()
     var that = this
-    var date = new Date(event.detail.value)
-    date.setHours(0)
-    date.setMinutes(0)
-    date.setSeconds(0)
-    date.setMilliseconds(0)
+    var date = Util.getZeroDate(event.detail.value)
     console.log('DateObj is :' + date)
     var obj = AV.Object.createWithoutData('Lovers', AV.User.current().toJSON().lovers.objectId)
     obj.set('togetherDate', date)
