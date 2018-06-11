@@ -90,15 +90,27 @@
 }
 
 .happy-color {
-  background-color: #e8adb1;
+  background-color: #f596aa;
+}
+
+.happy-text-color {
+  color: #f596aa;
 }
 
 .normal-color {
-  background-color: #fffdb3;
+  background-color: #f9bf45;
+}
+
+.normal-text-color {
+  color: #f9bf45;
 }
 
 .sad-color {
-  background-color: #a4c2e4;
+  background-color: #58b2dc;
+}
+
+.sad-text-color {
+  color: #58b2dc;
 }
 
 .date-place-container {
@@ -128,7 +140,6 @@
   flex: 1;
   width: 0%;
   font-size: 29rpx;
-  /* color: white; */
 }
 
 .place-input {

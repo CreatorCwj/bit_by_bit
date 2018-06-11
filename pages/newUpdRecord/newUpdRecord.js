@@ -1,31 +1,5 @@
-const Util = require('../../utils/util.js')
-
 // pages/newUpdRecord/newUpdRecord.js
-var txtDisAnimation = wx.createAnimation({
-  transformOrigin: "50% 50%",
-  duration: 400,
-  timingFunction: "linear",
-  delay: 0
-}).rotateY(-180).opacity(0).step().export();
-var emoAppAnimation = wx.createAnimation({
-  transformOrigin: "50% 50%",
-  duration: 400,
-  timingFunction: "linear",
-  delay: 0
-}).rotateY(-180).opacity(1).step().export();
-var txtAppAnimation = wx.createAnimation({
-  transformOrigin: "50% 50%",
-  duration: 400,
-  timingFunction: "linear",
-  delay: 0
-}).rotateY(0).opacity(1).step().export();
-var emoDisAnimation = wx.createAnimation({
-  transformOrigin: "50% 50%",
-  duration: 400,
-  timingFunction: "linear",
-  delay: 0
-}).rotateY(0).opacity(0).step().export();
-var emotionType = null;
+const Util = require('../../utils/util.js')
 
 Page({
 
@@ -33,17 +7,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-    txtDisAnimation: txtDisAnimation,
-    emoAppAnimation: emoAppAnimation,
-    txtAppAnimation: txtAppAnimation,
-    emoDisAnimation: emoDisAnimation,
+    txtDisAnimation: wx.createAnimation().rotateY(-180).opacity(0).step().export(),
+    txtAppAnimation: wx.createAnimation().rotateY(0).opacity(1).step().export(),
+    emoAppAnimation: wx.createAnimation().rotateY(-180).opacity(1).step().export(),
+    emoDisAnimation: wx.createAnimation().rotateY(0).opacity(0).step().export(),
     emotionType: null,
     selectedDate: null,
     place: null,
+    isImportant: false,
+    isFirst: false,
+    firstTitle: null,
   },
 
-  testAnimation: function (event) {
-    emotionType = event.currentTarget.dataset.emotionType
+  //是否开启第一次
+  changeFirst: function (event) {
+    this.setData({
+      isFirst: event.detail.value
+    })
+  },
+
+  //第一次标题
+  firstTitleChange: function (event) {
+    this.setData({
+      firstTitle: event.detail.value
+    })
+  },
+
+  //是否为重要事件
+  changeImportant: function (event) {
+    this.setData({
+      isImportant: event.detail.value
+    })
+  },
+
+  //选择心情
+  selectEmotion: function (event) {
+    var emotionType = event.currentTarget.dataset.emotionType
     this.setData({
       emotionType: emotionType
     })

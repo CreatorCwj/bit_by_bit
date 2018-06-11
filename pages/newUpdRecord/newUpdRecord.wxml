@@ -16,23 +16,23 @@
         </view>
         <view class='dp-row-container'>
           <image class='dp-image' src='../../resources/images/locate_white.png' mode='aspectFit' />
-          <input class='place-input' placeholder-class='input-placeholder' maxlength='-1' placeholder='发生在哪里呢~' bindinput='placeChange'/>
+          <input class='place-input' placeholder-class='input-placeholder' maxlength='-1' placeholder='发生在哪里呢~' bindinput='placeChange' />
         </view>
       </view>
-      <view class='emotion-container' bindtap='testAnimation' data-emotion-type='3'>
-        <text class='emotion-view' animation='{{emotionType==null?null:emotionType==3?txtDisAnimation:txtAppAnimation}}'>开森\n的\n一天</text>
+      <view class='emotion-container' bindtap='selectEmotion' data-emotion-type='3'>
+        <text class='emotion-view,happy-text-color' animation='{{emotionType==null?null:emotionType==3?txtDisAnimation:txtAppAnimation}}'>好\n开\n森</text>
         <image class='emotion-image,happy-color' src='../../resources/images/emotion_happy.png' animation='{{emotionType==null?null:emotionType==3?emoAppAnimation:emoDisAnimation}}' mode='aspectFit' />
       </view>
-      <view class='emotion-container' bindtap='testAnimation' data-emotion-type='2'>
-        <text class='emotion-view' animation='{{emotionType==null?null:emotionType==2?txtDisAnimation:txtAppAnimation}}'>普通\n的\n一天</text>
+      <view class='emotion-container' bindtap='selectEmotion' data-emotion-type='2'>
+        <text class='emotion-view,normal-text-color' animation='{{emotionType==null?null:emotionType==2?txtDisAnimation:txtAppAnimation}}'>一\n般\n般</text>
         <image class='emotion-image,normal-color' src='../../resources/images/emotion_normal.png' animation='{{emotionType==null?null:emotionType==2?emoAppAnimation:emoDisAnimation}}' mode='aspectFit' />
       </view>
-      <view class='emotion-container' bindtap='testAnimation' data-emotion-type='1'>
-        <text class='emotion-view' animation='{{emotionType==null?null:emotionType==1?txtDisAnimation:txtAppAnimation}}'>桑心\n的\n一天</text>
+      <view class='emotion-container' bindtap='selectEmotion' data-emotion-type='1'>
+        <text class='emotion-view,sad-text-color' animation='{{emotionType==null?null:emotionType==1?txtDisAnimation:txtAppAnimation}}'>好\n桑\n心</text>
         <image class='emotion-image,sad-color' src='../../resources/images/emotion_sad.png' animation='{{emotionType==null?null:emotionType==1?emoAppAnimation:emoDisAnimation}}' mode='aspectFit' />
       </view>
     </view>
-    <textarea class='content-area' placeholder-class='area-placeholder' maxlength='-1' auto-height='{{false}}' placeholder='发生了些什么呢~' bindinput='contentChange'/>
+    <textarea class='content-area' placeholder-class='area-placeholder' maxlength='-1' auto-height='{{false}}' placeholder='发生了些什么呢~' bindinput='contentChange' />
     <view class='images-container'>
       <image class='add-image' src='../../resources/images/record_add_blue.png' mode='aspectFit' />
       <image class='add-image' src='../../resources/images/record_add_blue.png' mode='aspectFit' />
@@ -41,17 +41,17 @@
     <view class='switch-container'>
       <image class='switch-icon' src='../../resources/images/first_icon_blue.png' mode='aspectFit' />
       <view class='switch-text'>第一次</view>
-      <switch class='switch' type='switch' color='#9bcae6' checked='{{false}}' />
+      <switch class='switch' type='switch' color='#9bcae6' checked='{{false}}' bindchange='changeFirst' />
     </view>
-    <view class='switch-tip' hidden='{{false}}'>设置"第一次"事件，会自动添加到"第一次"记录中哦~</view>
-    <view class='first-content-container' hidden='{{true}}'>
+    <view class='switch-tip' hidden='{{isFirst}}'>设置"第一次"事件，会自动添加到"第一次"记录中哦~</view>
+    <view class='first-content-container' hidden='{{!isFirst}}'>
       <view class='first-title'>标题：</view>
-      <input class='first-input' placeholder-class='first-input-placeholder' maxlength='10' placeholder='最多不能超过10个字~' />
+      <input class='first-input' placeholder-class='first-input-placeholder' maxlength='10' placeholder='最多不能超过10个字~' bindinput='firstTitleChange' />
     </view>
     <view class='switch-container'>
       <image class='switch-icon' src='../../resources/images/important_icon.png' mode='aspectFit' />
       <view class='switch-text'>重要事件</view>
-      <switch class='switch' type='switch' color='#9bcae6' checked='{{false}}' />
+      <switch class='switch' type='switch' color='#9bcae6' checked='{{false}}' bindchange='changeImportant' />
     </view>
     <view class='switch-tip'>标为重要事件，会在列表页的轮播图里展示哦~</view>
     <view class='btn-container'>
