@@ -9,7 +9,7 @@
     <block wx:for="{{swiperItems}}" wx:key="objectId">
       <swiper-item class='swiper-item-container'>
         <image src="{{ModuleUtil.getImageUrl(item)}}" class="swiper-image" mode='aspectFill' />
-        <view class='swiper-title-layer'>{{item.title}}</view>
+        <view class='swiper-title-layer'>{{item.content}}</view>
       </swiper-item>
     </block>
   </swiper>
@@ -24,9 +24,9 @@
       <view class='content-container'>
         <view class='info-container'>
           <view class='item-publisher'>{{item.publisher.customName?item.publisher.customName:item.publisher.nickName}}：</view>
-          <view class='item-title'>{{item.title}}</view>
+          <view class='item-title'>{{item.content}}</view>
           <view class='place-container'>
-            <image class='locate-icon' src='../../resources/images/locate.png' mode='widthFix' />
+            <image class='locate-icon' src='../../resources/images/locate.png' mode='aspectFit' />
             <view class='item-place'>{{item.place}}</view>
           </view>
         </view>

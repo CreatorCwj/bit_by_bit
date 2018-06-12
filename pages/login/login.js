@@ -34,6 +34,7 @@ Page({
     var that = this
     wx.showLoading({
       title: '登录中',
+      mask: true,
     })
     //登录云端
     AV.User.loginWithWeapp().then(user => {
@@ -106,6 +107,7 @@ Page({
   fetchUserInfo: function () {
     wx.showLoading({
       title: '获取用户信息',
+      mask: true,
     })
     var that = this
     //获取UserInfo
@@ -165,6 +167,7 @@ Page({
         if (res.confirm) {//同意
           wx.showLoading({
             title: '绑定中',
+            mask: true,
           })
           var user = AV.User.current()
           //云端创建Lovers关系并绑定至User
@@ -232,6 +235,7 @@ Page({
   updUserAndJump: function () {
     wx.showLoading({
       title: '更新用户信息',
+      mask: true,
     })
     var that = this
     AV.User.current().fetch().then(function () {

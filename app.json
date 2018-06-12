@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/newUpdRecord/newUpdRecord",
+    "pages/record/record",
     "pages/login/login",
     "pages/time/time",
-    "pages/record/record",
-    "pages/we/we"
+    "pages/we/we",
+    "pages/newUpdRecord/newUpdRecord"
   ],
   "window": {
     "backgroundTextStyle": "light",

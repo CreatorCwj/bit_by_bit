@@ -12,7 +12,18 @@ var getDateFontColor = function (dateString) {
   return dateString ? 'white' : '#f0f0f0'
 }
 
+//返回有多少个新增按钮
+var getAddImagesArray = function (urls) {
+  var size = (urls && urls.length > 0) ? (3 - urls.length % 3) : 3
+  var arr = []
+  for (var i = 0; i < size; ++i) {
+    arr[i] = i
+  }
+  return arr
+}
+
 module.exports = {
   getSelectedDateStr: getSelectedDateStr,
   getDateFontColor: getDateFontColor,
+  getAddImagesArray: getAddImagesArray,
 }

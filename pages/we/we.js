@@ -11,37 +11,12 @@ Page({
   },
 
   click: function () {
-    if (++cnt == 1) {
-      this.setData({
-        animation: wx.createAnimation({
-          transformOrigin: "50% 50%",
-          duration: 1500,
-          timingFunction: "linear",
-          delay: 0
-        }).rotateY(45).step().export(),
-        animation2: wx.createAnimation({
-          transformOrigin: "50% 50%",
-          duration: 1500,
-          timingFunction: "linear",
-          delay: 0
-        }).rotateY(-45).step().export()
-      })
-    } else {
-      this.setData({
-        animation: wx.createAnimation({
-          transformOrigin: "50% 50%",
-          duration: 1500,
-          timingFunction: "linear",
-          delay: 0
-        }).rotateY(0).step().export(),
-        animation2: wx.createAnimation({
-          transformOrigin: "50% 50%",
-          duration: 1500,
-          timingFunction: "linear",
-          delay: 0
-        }).rotateY(0).step().export()
-      })
-    }
+    wx.chooseImage({
+      success: function(res) {
+        console.log(res.tempFilePaths[0])
+        console.log(res.tempFiles[0].path)
+      },
+    })
   },
 
   /**

@@ -5,19 +5,21 @@ var currentPageNo = 1
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     swiperItems: [],
     listItems: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     wx.startPullDownRefresh()
+  },
+
+  onShow: function () {
+    var needRefresh = getApp().globalData.refreshRecordList
+    if (needRefresh) {
+      getApp().globalData.refreshRecordList = false
+      wx.startPullDownRefresh()
+    }
   },
 
   /**

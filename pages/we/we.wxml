@@ -1,2 +1,2 @@
 <!--pages/we/we.wxml-->
-<image class='image' src='../../resources/images/locate.png' mode='aspectFit' />
+<image class='image' src='../../resources/images/locate.png' mode='aspectFit' bindtap='click'/>

@@ -14,13 +14,7 @@ const realtime = new Realtime({
 
 App({
   globalData: {
-    realtime: realtime
-  },
-  onLaunch: function () {
-    wx.getSetting({
-      success: (res) => {
-        var a = res.authSetting['scope.userInfo']
-      }
-    })
+    realtime: realtime,
+    refreshRecordList: false,
   }
 })

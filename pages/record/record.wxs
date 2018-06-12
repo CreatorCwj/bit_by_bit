@@ -19,11 +19,11 @@ var getImageUrl = function (record) {
 var getEmotionColor = function (emotionNum) {
   switch (emotionNum) {
     case 1:
-      return '#a4c2e4'
+      return '#58b2dc'
     case 2:
-      return '#fffdb3'
+      return '#f9bf45'
     case 3:
-      return '#e8adb1'
+      return '#f596aa'
   }
   return 'white'
 }

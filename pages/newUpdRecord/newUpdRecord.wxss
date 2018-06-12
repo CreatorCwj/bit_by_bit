@@ -43,13 +43,6 @@
   margin-left: 190rpx;
 }
 
-.content-container {
-  width: 0%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
 .date-place-emotion-container {
   width: 100%;
   background-color: #bfd5ed;
@@ -169,25 +162,48 @@
 
 .images-container {
   width: 100%;
+  box-sizing: border-box;
+  border-left: 2rpx solid #d3e3f3;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.image-container {
+  margin-bottom: 10rpx;
+  width: 200rpx;
+  height: 200rpx;
+  position: relative;
+}
+
+.delete-image {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  background-color: #bfbfbf;
+  box-sizing: border-box;
+  padding: 7rpx;
 }
 
 .image {
-  width: 220rpx;
-  height: 220rpx;
+  width: 100%;
+  height: 100%;
 }
 
 .add-image {
-  width: 220rpx;
-  height: 220rpx;
+  margin-bottom: 10rpx;
+  width: 200rpx;
+  height: 200rpx;
   box-sizing: border-box;
   border-top: 2rpx solid #d3e3f3;
   border-right: 2rpx solid #d3e3f3;
   border-bottom: 2rpx solid #d3e3f3;
   border-left: 2rpx solid #d3e3f3;
-  padding: 91rpx;
+  padding: 81rpx;
 }
 
 .switch-container {
