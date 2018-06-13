@@ -61,17 +61,18 @@ Page({
       pageNo: currentPageNo
     }).then(function (res) {
       wx.hideNavigationBarLoading()
-      if (res && res.length > 0) {
+      if (res.dataList && res.dataList.length > 0) {
         //更新View
-        var newList = that.data.listItems.contact(res.dataList)
+        var newList = that.data.listItems.concat(res.dataList)
         that.setData({
           listItems: newList
         })
       } else {
+        --currentPageNo//reset pageNo，下次再次加载本页看有没有数据
         Util.showMsg('没有更多数据了！')
       }
     }).catch(function () {
-      --currentPageNo//restore pageNo
+      --currentPageNo//reset pageNo
       wx.hideNavigationBarLoading()
       Util.showMsg('数据请求失败')
     })
