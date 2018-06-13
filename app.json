@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/record/record",
     "pages/login/login",
     "pages/time/time",
+    "pages/record/record",
     "pages/we/we",
     "pages/newUpdRecord/newUpdRecord"
   ],
