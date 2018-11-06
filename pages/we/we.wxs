@@ -1,0 +1,88 @@
+var Util = require('../../utils/util.wxs')
+
+var DEFAULT_TEXT = '--'
+var SETTING_TIP = '可以点击设置'
+
+var getCustomName = function(user) {
+  if (!user) {
+    return DEFAULT_TEXT
+  }
+  if (!user.customName) {
+    return user.nickName ? user.nickName : SETTING_TIP
+  }
+  return user.customName
+}
+
+var getBirthday = function(user) {
+  if (!user) {
+    return DEFAULT_TEXT
+  }
+  if (user.birthdayIsSolar) {
+    return user.solarBirthday ? Util.getFormatDate(getDate(user.solarBirthday), {
+      useCn: true,
+    }, null) : SETTING_TIP
+  } else {
+    return user.lunarBirthdayCn ? user.lunarBirthdayCn : SETTING_TIP
+  }
+}
+
+var getAnimal = function(user) {
+  if (!user || !user.animal) {
+    return DEFAULT_TEXT
+  }
+  return user.animal
+}
+
+var getConstellation = function(user) {
+  if (!user || !user.constellation) {
+    return DEFAULT_TEXT
+  }
+  return user.constellation
+}
+
+var getSexImage = function(user, isTop) {
+  if (!user) {
+    return ''
+  }
+  switch (user.gender) {
+    case 1: //男
+      return isTop ? '../../resources/images/man_flag_white.png' : '../../resources/images/man_flag_blue.png'
+    case 2: //女
+      return isTop ? '../../resources/images/woman_flag_white.png' : '../../resources/images/woman_flag_blue.png'
+    default:
+      return ''
+  }
+}
+
+var getExtraBySex = function(user, isTop) {
+  if (!user) {
+    return DEFAULT_TEXT
+  }
+  switch (user.gender) {
+    case 1: //男
+      var herMen = user.herMenstruation ? Util.getFormatDate(getDate(user.herMenstruation), {
+        useCn: true,
+      }, {
+        excYear: true
+      }) : SETTING_TIP
+      return isTop ? '她上次大姨妈：' + herMen : herMen + '：她上次大姨妈'
+    case 2: //女
+      var hisML = user.hisMakeLove ? Util.getFormatDate(getDate(user.hisMakeLove), {
+        useCn: true,
+      }, {
+        excYear: true
+      }) : SETTING_TIP
+      return isTop ? '他上次啪啪啪：' + hisML : hisML + '：他上次啪啪啪'
+    default:
+      return DEFAULT_TEXT
+  }
+}
+
+module.exports = {
+  getCustomName: getCustomName,
+  getBirthday: getBirthday,
+  getAnimal: getAnimal,
+  getConstellation: getConstellation,
+  getSexImage: getSexImage,
+  getExtraBySex: getExtraBySex,
+}

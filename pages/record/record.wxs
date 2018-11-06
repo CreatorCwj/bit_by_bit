@@ -1,14 +1,17 @@
 var Util = require('../../utils/util.wxs')
 
 //获取日期字符串
-var getDateString = function (dateString) {
+var getDateString = function(dateString) {
   if (!dateString) return ''
   var date = getDate(dateString)
-  return Util.getChineseWeek(date.getDay()) + '\n' + Util.getFormatDate(date, '.')
+  return Util.getChineseWeek(date.getDay()) + '\n' + Util.getFormatDate(date, {
+    useCn: false,
+    spliter: '.'
+  }, null)
 }
 
 //获取第一张图片或默认图片
-var getImageUrl = function (record) {
+var getImageUrl = function(record) {
   if (!record || !record.images || record.images.length <= 0 || !record.images[0] || !record.images[0].url) {
     return '../../resources/images/default_image.png'
   }
@@ -16,7 +19,7 @@ var getImageUrl = function (record) {
 }
 
 //获取心情的颜色
-var getEmotionColor = function (emotionNum) {
+var getEmotionColor = function(emotionNum) {
   switch (emotionNum) {
     case 1:
       return '#58b2dc'

@@ -23,7 +23,7 @@ Page({
   },
 
   //提交
-  submit: function () {
+  submit: function() {
     if (!this.data.selectedDate) {
       Util.showMsg('要选择日期哦~')
       return
@@ -51,8 +51,8 @@ Page({
       mask: true,
     })
     var record = new AV.Object('Records')
-    record.set('publisher', AV.User.current())
-    record.set('lovers', AV.Object.createWithoutData('Lovers', AV.User.current().toJSON().lovers.objectId))
+    record.set('publisher', AV.Object.createWithoutData('_User', getApp().globalData.userData.self.objectId))
+    record.set('lovers', AV.Object.createWithoutData('Lovers', getApp().globalData.userData.self.lovers.objectId))
     record.set('date', this.data.selectedDate)
     record.set('place', this.data.place)
     record.set('emotion', this.data.emotionType)
@@ -60,7 +60,7 @@ Page({
     record.set('isFirst', this.data.isFirst)
     record.set('firstContent', this.data.firstContent)
     record.set('important', this.data.isImportant)
-    var imageArr = (this.data.imageUrls && this.data.imageUrls.length > 0) ? this.data.imageUrls.map(function (url) {
+    var imageArr = (this.data.imageUrls && this.data.imageUrls.length > 0) ? this.data.imageUrls.map(function(url) {
       return new AV.File('RecordImage', {
         blob: {
           uri: url
@@ -68,7 +68,7 @@ Page({
       })
     }) : []
     record.set('images', imageArr)
-    record.save().then(function (res) {
+    record.save().then(function(res) {
       wx.hideNavigationBarLoading()
       wx.hideLoading()
       Util.showMsg('提交成功')
@@ -78,7 +78,7 @@ Page({
       wx.navigateBack({
         delta: 1
       })
-    }).catch(function () {
+    }).catch(function(err) {
       wx.hideNavigationBarLoading()
       wx.hideLoading()
       Util.showMsg('提交失败')
@@ -86,7 +86,7 @@ Page({
   },
 
   //重置
-  reset: function () {
+  reset: function() {
     this.setData({
       selectedDate: null,
       place: null,
@@ -100,11 +100,11 @@ Page({
   },
 
   //添加图片
-  addImage: function () {
+  addImage: function() {
     var that = this
     wx.chooseImage({
       count: 9,
-      success: function (res) {
+      success: function(res) {
         if (res && res.tempFilePaths) {
           var urls = that.data.imageUrls ? that.data.imageUrls : []
           urls = urls.concat(res.tempFilePaths)
@@ -117,12 +117,12 @@ Page({
   },
 
   //删除图片
-  deleteUrl: function (event) {
+  deleteUrl: function(event) {
     var that = this
     wx.showModal({
       title: '提示',
       content: '是否要删除图片?',
-      success: function (res) {
+      success: function(res) {
         if (res.confirm) {
           var idx = event.currentTarget.dataset.imageUrlIndex
           var imageUrls = that.data.imageUrls
@@ -136,7 +136,7 @@ Page({
   },
 
   //点击图片预览
-  previewImage: function (event) {
+  previewImage: function(event) {
     var that = this
     wx.previewImage({
       current: event.currentTarget.dataset.imageUrl,
@@ -145,28 +145,28 @@ Page({
   },
 
   //是否开启第一次
-  changeFirst: function (event) {
+  changeFirst: function(event) {
     this.setData({
       isFirst: event.detail.value
     })
   },
 
   //第一次标题
-  firstContentChange: function (event) {
+  firstContentChange: function(event) {
     this.setData({
       firstContent: event.detail.value
     })
   },
 
   //是否为重要事件
-  changeImportant: function (event) {
+  changeImportant: function(event) {
     this.setData({
       isImportant: event.detail.value
     })
   },
 
   //选择心情
-  selectEmotion: function (event) {
+  selectEmotion: function(event) {
     var emotionType = parseInt(event.currentTarget.dataset.emotionType)
     this.setData({
       emotionType: emotionType
@@ -174,7 +174,7 @@ Page({
   },
 
   //选择日期
-  selectDate: function (event) {
+  selectDate: function(event) {
     var date = Util.getZeroDate(event.detail.value)
     this.setData({
       selectedDate: date,
@@ -182,14 +182,14 @@ Page({
   },
 
   //输入地点
-  placeChange: function (event) {
+  placeChange: function(event) {
     this.setData({
       place: event.detail.value
     })
   },
 
   //输入内容
-  contentChange: function (event) {
+  contentChange: function(event) {
     this.setData({
       content: event.detail.value
     })

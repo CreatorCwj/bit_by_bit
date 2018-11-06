@@ -1,2 +1,35 @@
 <!--pages/we/we.wxml-->
-<image class='image' src='../../resources/images/locate.png' mode='aspectFit' bindtap='click'/>
+<wxs src='./we.wxs' module="ModuleUtil" />
+<wxs src='../../utils/util.wxs' module="Util" />
+<view class='we-container'>
+  <view class='left-background' />
+  <view class='right-background' />
+  <view class='center-container'>
+    <!-- top -->
+    <view class='userinfo-container'>
+      <view class='userinfo-desc-container'>
+        <input class='custom-name' value='{{ModuleUtil.getCustomName(selfData)}}' placeholder-class='custom-name-placeholder' maxlength='6' placeholder='请输入昵称~' bindblur='customNameDone' />
+        <picker class='other-userinfo' mode="date" value="{{Util.getCurrentDate()}}" end="{{Util.getCurrentDate()}}" bindchange="selectBirthday">生日：{{ModuleUtil.getBirthday(selfData)}}</picker>
+        <view class='other-userinfo'>属相：{{ModuleUtil.getAnimal(selfData)}}</view>
+        <view class='other-userinfo'>星座：{{ModuleUtil.getConstellation(selfData)}}</view>
+        <picker class='other-userinfo' mode="date" value="{{Util.getCurrentDate()}}" end="{{Util.getCurrentDate()}}" bindchange="selectExtra">{{ModuleUtil.getExtraBySex(selfData,true)}}</picker>
+      </view>
+      <image class='sex-image' src='{{ModuleUtil.getSexImage(selfData,true)}}' />
+      <image class="userinfo-avatar" src="{{selfData.avatarUrl}}" mode='aspectFill' />
+    </view>
+    <!-- center -->
+    <image class='center-image' src='../../resources/images/main_color_heart.png' mode='widthFix' />
+    <!-- bottom -->
+    <view class='userinfo-container,ui-con-bottom'>
+      <view class='userinfo-desc-container,ui-desc-con-right'>
+        <view class='custom-name,text-left'>{{ModuleUtil.getCustomName(loverData)}}</view>
+        <view class='other-userinfo,text-left'>{{ModuleUtil.getBirthday(loverData)}}：生日</view>
+        <view class='other-userinfo,text-left'>{{ModuleUtil.getAnimal(loverData)}}：属相</view>
+        <view class='other-userinfo,text-left'>{{ModuleUtil.getConstellation(loverData)}}：星座</view>
+        <view class='other-userinfo,text-left'>{{ModuleUtil.getExtraBySex(loverData,false)}}</view>
+      </view>
+      <image class='bottom-sex-image' src='{{ModuleUtil.getSexImage(loverData,false)}}' />
+      <image class="ui-ava-bottom" src="{{loverData.avatarUrl}}" mode='aspectFill' />
+    </view>
+  </view>
+</view>

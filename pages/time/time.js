@@ -13,7 +13,7 @@ Page({
     hasDays: false,
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     var cacheUrl = this.getCacheWallPaper()
     this.setData({
       wallPaperUrl: cacheUrl
@@ -21,32 +21,32 @@ Page({
     wx.startPullDownRefresh()
   },
 
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     this.loadData()
   },
 
-  selectDate: function (event) {
+  selectDate: function(event) {
     wx.showNavigationBarLoading()
     var that = this
     var date = Util.getZeroDate(event.detail.value)
     console.log('DateObj is :' + date)
-    var obj = AV.Object.createWithoutData('Lovers', AV.User.current().toJSON().lovers.objectId)
+    var obj = AV.Object.createWithoutData('Lovers', getApp().globalData.userData.self.lovers.objectId)
     obj.set('togetherDate', date)
-    obj.save().then(function () {
+    obj.save().then(function() {
       wx.hideNavigationBarLoading()
       Util.showMsg('设置日期成功')
       that.loadData()
-    }).catch(function () {
+    }).catch(function() {
       wx.hideNavigationBarLoading()
       Util.showMsg('设置日期失败')
     })
   },
 
-  selectWallPaper: function () {
+  selectWallPaper: function() {
     var that = this
     wx.chooseImage({
       count: 1,
-      success: function (res) {
+      success: function(res) {
         var filePath = (res.tempFilePaths && res.tempFilePaths.length > 0) ? res.tempFilePaths[0] : null
         if (filePath) {
           wx.showNavigationBarLoading()
@@ -55,13 +55,13 @@ Page({
               uri: filePath
             }
           })
-          var obj = AV.Object.createWithoutData('Lovers', AV.User.current().toJSON().lovers.objectId)
+          var obj = AV.Object.createWithoutData('Lovers', getApp().globalData.userData.self.lovers.objectId)
           obj.set('wallPaper', fileObj)
-          obj.save().then(function () {
+          obj.save().then(function() {
             wx.hideNavigationBarLoading()
             Util.showMsg('设置图片成功')
             that.loadData()
-          }).catch(function () {
+          }).catch(function() {
             wx.hideNavigationBarLoading()
             Util.showMsg('设置图片失败')
           })
@@ -72,10 +72,12 @@ Page({
     })
   },
 
-  loadData: function () {
+  loadData: function() {
     wx.showNavigationBarLoading()
     var that = this
-    AV.Cloud.run('getWallPaperAndDays', { objId: AV.User.current().toJSON().lovers.objectId }).then(function (res) {
+    AV.Cloud.run('getWallPaperAndDays', {
+      objId: getApp().globalData.userData.self.lovers.objectId
+    }).then(function(res) {
       wx.stopPullDownRefresh()
       wx.hideNavigationBarLoading()
       //更新View
@@ -94,14 +96,14 @@ Page({
           data: res.url
         })
       }
-    }).catch(function () {
+    }).catch(function() {
       wx.stopPullDownRefresh()
       wx.hideNavigationBarLoading()
       Util.showMsg('数据请求失败')
     })
   },
 
-  getCacheWallPaper: function () {
+  getCacheWallPaper: function() {
     try {
       var cacheUrl = wx.getStorageSync(CACHE_WALLPAPER_KEY)
       return cacheUrl ? cacheUrl : DEFAULT_WALLPAPER

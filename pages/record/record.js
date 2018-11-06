@@ -10,11 +10,11 @@ Page({
     listItems: []
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     wx.startPullDownRefresh()
   },
 
-  onShow: function () {
+  onShow: function() {
     var needRefresh = getApp().globalData.refreshRecordList
     if (needRefresh) {
       getApp().globalData.refreshRecordList = false
@@ -25,15 +25,15 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-    currentPageNo = 1//reset pageNo
+  onPullDownRefresh: function() {
+    currentPageNo = 1 //reset pageNo
     wx.showNavigationBarLoading()
     var that = this
     AV.Cloud.run('getDataList', {
-      objId: AV.User.current().toJSON().lovers.objectId,
+      objId: getApp().globalData.userData.self.lovers.objectId,
       important: true,
       pageNo: currentPageNo
-    }).then(function (res) {
+    }).then(function(res) {
       wx.stopPullDownRefresh()
       wx.hideNavigationBarLoading()
       //更新View
@@ -41,7 +41,7 @@ Page({
         swiperItems: res.importants,
         listItems: res.dataList
       })
-    }).catch(function () {
+    }).catch(function() {
       wx.stopPullDownRefresh()
       wx.hideNavigationBarLoading()
       Util.showMsg('数据请求失败')
@@ -51,15 +51,15 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-    ++currentPageNo//add pageNo
+  onReachBottom: function() {
+    ++currentPageNo //add pageNo
     wx.showNavigationBarLoading()
     var that = this
     AV.Cloud.run('getDataList', {
-      objId: AV.User.current().toJSON().lovers.objectId,
+      objId: getApp().globalData.userData.self.lovers.objectId,
       important: false,
       pageNo: currentPageNo
-    }).then(function (res) {
+    }).then(function(res) {
       wx.hideNavigationBarLoading()
       if (res.dataList && res.dataList.length > 0) {
         //更新View
@@ -68,17 +68,17 @@ Page({
           listItems: newList
         })
       } else {
-        --currentPageNo//reset pageNo，下次再次加载本页看有没有数据
+        --currentPageNo //reset pageNo，下次再次加载本页看有没有数据
         Util.showMsg('没有更多数据了！')
       }
-    }).catch(function () {
-      --currentPageNo//reset pageNo
+    }).catch(function() {
+      --currentPageNo //reset pageNo
       wx.hideNavigationBarLoading()
       Util.showMsg('数据请求失败')
     })
   },
 
-  addRecord: function () {
+  addRecord: function() {
     wx.navigateTo({
       url: '/pages/newUpdRecord/newUpdRecord'
     })

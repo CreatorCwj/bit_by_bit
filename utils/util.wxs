@@ -1,5 +1,5 @@
 //获取星期几信息
-var getChineseWeek = function (day) {
+var getChineseWeek = function(day) {
   switch (day) {
     case 0:
       return '周日'
@@ -20,15 +20,20 @@ var getChineseWeek = function (day) {
 }
 
 //获取字符串格式的年月日
-var getFormatDate = function (date, spliter) {
+var getFormatDate = function(date, spliterOptions, attrOptions) {
   if (!date) return ''
+  var year = date.getFullYear()
   var month = ((date.getMonth() + 1) >= 10) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))
   var day = date.getDate() >= 10 ? date.getDate() : ('0' + date.getDate())
-  return date.getFullYear() + spliter + month + spliter + day
+  if (spliterOptions.useCn) {
+    return '' + ((attrOptions && attrOptions.excYear) ? '' : (year + '年 ')) + ((attrOptions && attrOptions.excMonth) ? '' : (month + '月 ')) + ((attrOptions && attrOptions.excDay) ? '' : (day + '日'))
+  } else {
+    return '' + ((attrOptions && attrOptions.excYear) ? '' : (year + spliterOptions.spliter)) + ((attrOptions && attrOptions.excMonth) ? '' : (month + spliterOptions.spliter)) + ((attrOptions && attrOptions.excDay) ? '' : day)
+  }
 }
 
 //获取当前时间date对象
-var getCurrentDate = function () {
+var getCurrentDate = function() {
   return getDate()
 }
 

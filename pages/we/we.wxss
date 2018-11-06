@@ -1,7 +1,131 @@
 /* pages/we/we.wxss */
 
-.image {
-  width: 28rpx;
-  height: 28rpx;
-  background-color: red;
+page {
+  height: 100%;
+}
+
+.we-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.left-background {
+  width: 50%;
+  height: 100%;
+  background-color: #eaf1f9;
+}
+
+.right-background {
+  width: 50%;
+  height: 100%;
+  background-color: white;
+}
+
+.center-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 30rpx 0 30rpx;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.userinfo-container {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #bed4ec;
+  border: 1rpx solid white;
+  border-radius: 60rpx;
+  margin-top: 59rpx;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.ui-con-bottom {
+  background-color: white;
+  border: 1rpx solid #bed4ec;
+}
+
+.userinfo-desc-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+}
+
+.ui-desc-con-right {
+  align-self: flex-start;
+}
+
+.custom-name {
+  color: white;
+  font-size: 37rpx;
+  padding: 22rpx 0 22rpx 0;
+}
+
+.custom-name-placeholder {
+  font-size: 37rpx;
+  color: #f0f0f0;
+}
+
+.other-userinfo {
+  color: white;
+  font-size: 24rpx;
+  padding: 11rpx 0 11rpx 0;
+}
+
+.text-left {
+  text-align: end;
+  color: #bed4ec;
+}
+
+.sex-image {
+  width: 46rpx;
+  height: 46rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 22rpx 34rpx 0 0;
+}
+
+.bottom-sex-image {
+  width: 46rpx;
+  height: 46rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 22rpx 0 0 34rpx;
+}
+
+.userinfo-avatar {
+  width: 270rpx;
+  height: 270rpx;
+  border-radius: 50%;
+  position: absolute;
+  left: 23rpx;
+  top: -59rpx;
+}
+
+.ui-ava-bottom {
+  width: 270rpx;
+  height: 270rpx;
+  border-radius: 50%;
+  position: absolute;
+  right: 23rpx;
+  top: -59rpx;
+}
+
+.center-content {
+  width: 100%;
+  color: black;
+}
+
+.center-image {
+  width: 100rpx;
 }
