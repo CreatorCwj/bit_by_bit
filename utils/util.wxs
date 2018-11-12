@@ -26,7 +26,7 @@ var getFormatDate = function(date, spliterOptions, attrOptions) {
   var month = ((date.getMonth() + 1) >= 10) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))
   var day = date.getDate() >= 10 ? date.getDate() : ('0' + date.getDate())
   if (spliterOptions.useCn) {
-    return '' + ((attrOptions && attrOptions.excYear) ? '' : (year + '年 ')) + ((attrOptions && attrOptions.excMonth) ? '' : (month + '月 ')) + ((attrOptions && attrOptions.excDay) ? '' : (day + '日'))
+    return '' + ((attrOptions && attrOptions.excYear) ? '' : (year + '年')) + ((attrOptions && attrOptions.excMonth) ? '' : (month + '月')) + ((attrOptions && attrOptions.excDay) ? '' : (day + '日'))
   } else {
     return '' + ((attrOptions && attrOptions.excYear) ? '' : (year + spliterOptions.spliter)) + ((attrOptions && attrOptions.excMonth) ? '' : (month + spliterOptions.spliter)) + ((attrOptions && attrOptions.excDay) ? '' : day)
   }
