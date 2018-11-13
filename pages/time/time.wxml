@@ -19,7 +19,7 @@
       </view>
     </view>
     <view class='buttons_container'>
-      <view class='button_container'>
+      <view class='button_container' bindtap='gotoPast'>
         <image class='button_img,app-bg-color' src='../../resources/images/past_icon.png' mode='aspectFit' />
         <text class='btn_chinese_text'>纪念日</text>
         <text class='btn_english_text'>Past</text>

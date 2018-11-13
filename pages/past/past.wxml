@@ -1,0 +1,26 @@
+<!--pages/past/past.wxml-->
+<wxs src='./past.wxs' module="ModuleUtil" />
+<view class='past-container'>
+  <view class='header-container'>
+    <view class='header-line-container'>
+      <view class='header-text'>{{ModuleUtil.getTitle(anniversary)}}</view>
+      <view class='header-text'>{{ModuleUtil.getTimes(anniversary)}}</view>
+    </view>
+    <view class='header-line-container,header-line-gap'>
+      <view class='header-text,header-small-text'>{{ModuleUtil.getTip(anniversary)}}</view>
+      <view class='header-text,header-small-text'>{{ModuleUtil.getDays(anniversary)}}</view>
+    </view>
+  </view>
+  <block wx:for="{{dataList}}" wx:key="id">
+    <view class='item-container'>
+      <view class='item-title-container'>
+        <view class='item-title'>{{ModuleUtil.getTitle(item)}}</view>
+        <view class='item-next-title'>{{ModuleUtil.getTip(item)}}</view>
+      </view>
+      <view class='item-content-container'>
+        <view class='content-text'>{{ModuleUtil.getTimes(item)}}</view>
+        <view class='content-text'>{{ModuleUtil.getDays(item)}}</view>
+      </view>
+    </view>
+  </block>
+</view>

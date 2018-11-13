@@ -82,7 +82,7 @@ Page({
       wx.hideNavigationBarLoading()
       //更新View
       var cacheUrl = that.getCacheWallPaper()
-      var dateSet = res.days || res.days == 0
+      var dateSet = res.days ? true : false
       that.setData({
         wallPaperUrl: res.url ? res.url : cacheUrl,
         daysPrefix: dateSet ? '相随相伴' : '快点击设置你们的第一天吧',
@@ -110,5 +110,11 @@ Page({
     } catch (e) {
       return DEFAULT_WALLPAPER
     }
+  },
+
+  gotoPast: function() {
+    wx.navigateTo({
+      url: '/pages/past/past'
+    })
   }
 })

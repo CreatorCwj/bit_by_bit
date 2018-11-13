@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/past/past",
     "pages/time/time",
     "pages/record/record",
     "pages/we/we",

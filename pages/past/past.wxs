@@ -1,0 +1,37 @@
+var Util = require('../../utils/util.wxs')
+var DEFAULT_TEXT = '--'
+
+var getTimes = function(obj) {
+  if (obj && obj.hasSet) {
+    return obj.times + '次'
+  }
+  return DEFAULT_TEXT
+}
+
+var getDays = function(obj) {
+  if (obj && obj.hasSet) {
+    return obj.nextDays + '天'
+  }
+  return DEFAULT_TEXT
+}
+
+var getTip = function(obj) {
+  if (obj && obj.hasSet) {
+    return '距离下次'
+  }
+  return (obj && obj.setTip) ? obj.setTip : DEFAULT_TEXT
+}
+
+var getTitle = function(obj) {
+  if (obj && obj.title) {
+    return obj.title
+  }
+  return DEFAULT_TEXT
+}
+
+module.exports = {
+  getTimes: getTimes,
+  getDays: getDays,
+  getTip: getTip,
+  getTitle: getTitle,
+}
