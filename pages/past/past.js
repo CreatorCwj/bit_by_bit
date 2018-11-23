@@ -26,6 +26,7 @@ Page({
     wx.showNavigationBarLoading()
     var that = this
     AV.Cloud.run('getPastInfo', {
+      myId: getApp().globalData.userData.self.objectId,
       loversId: getApp().globalData.userData.self.lovers.objectId,
     }).then(function(res) {
       wx.stopPullDownRefresh()
