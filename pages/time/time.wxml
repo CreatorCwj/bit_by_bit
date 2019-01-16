@@ -24,7 +24,7 @@
         <text class='btn_chinese_text'>纪念日</text>
         <text class='btn_english_text'>Past</text>
       </view>
-      <view class='button_container'>
+      <view class='button_container' bindtap='gotoFirst'>
         <image class='button_img,app-bg-color' src='../../resources/images/first_icon.png' mode='aspectFit' />
         <text class='btn_chinese_text'>第一次</text>
         <text class='btn_english_text'>First</text>

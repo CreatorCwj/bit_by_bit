@@ -1,0 +1,27 @@
+var Util = require('../../utils/util.wxs')
+
+var getTime = function(item) {
+  if (!item || !item.date) return ''
+  return Util.getFormatDate(getDate(item.date), {
+    spliter: '.',
+  })
+}
+
+var getDateText = function(date) {
+  if (!date) {
+    return '请选择日期'
+  }
+  return Util.getFormatDate(getDate(date), {
+    spliter: '.',
+  })
+}
+
+var getDateFontColor = function(date) {
+  return !date ? '#afabac' : 'black'
+}
+
+module.exports = {
+  getTime: getTime,
+  getDateText: getDateText,
+  getDateFontColor: getDateFontColor,
+}

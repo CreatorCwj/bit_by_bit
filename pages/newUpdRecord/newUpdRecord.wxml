@@ -54,7 +54,7 @@
     <view class='switch-tip' hidden='{{isFirst}}'>设置"第一次"事件，会自动添加到"第一次"记录中哦~</view>
     <view class='first-content-container' hidden='{{!isFirst}}'>
       <view class='first-title'>标题：</view>
-      <input class='first-input' value='{{firstContent}}' placeholder-class='first-input-placeholder' maxlength='10' placeholder='最多不能超过10个字~' bindinput='firstContentChange' />
+      <input class='first-input' value='{{firstContent}}' placeholder-class='first-input-placeholder' maxlength='4' placeholder='最多不能超过4个字~' bindinput='firstContentChange' />
     </view>
     <view class='switch-container'>
       <image class='switch-icon' src='../../resources/images/important_icon.png' mode='aspectFit' />

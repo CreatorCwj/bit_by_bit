@@ -116,5 +116,11 @@ Page({
     wx.navigateTo({
       url: '/pages/past/past'
     })
+  },
+
+  gotoFirst: function() {
+    wx.navigateTo({
+      url: '/pages/first/first'
+    })
   }
 })

@@ -1,0 +1,26 @@
+<!--pages/first/first.wxml-->
+<wxs src='./first.wxs' module="ModuleUtil" />
+<wxs src='../../utils/util.wxs' module="Util" />
+<view class='tip-container' hidden='{{dataList&&dataList.length>0}}'>
+  <view class='tip-text,app-text-color'>快来添加你们的第一次吧~~</view>
+  <image class='tip-image' src='../../resources/images/record_add_tip.png' mode='widthFix' />
+</view>
+<view class='grid-container'>
+  <block wx:for="{{dataList}}" wx:key="id">
+    <view class='item-container'>
+      <view class='item-date'>{{ModuleUtil.getTime(item)}}</view>
+      <view class='item-content'>{{item.content}}</view>
+    </view>
+  </block>
+</view>
+<image class='add-image' src='../../resources/images/record_add.png' mode='aspectFit' bindtap='addFirst' />
+<view class='add-view' hidden='{{!showAdd}}'>
+  <view class='add-container'>
+    <image class='cancel-image' src='../../resources/images/delete_image.png' mode='aspectFit' bindtap='onCancelClick' />
+    <view class='add-text'>时间</view>
+    <picker class='add-text,add-date' style='color:{{ModuleUtil.getDateFontColor(selectDate)}}' mode="date" value="{{Util.getCurrentDate()}}" end="{{Util.getCurrentDate()}}" bindchange="onDateSelect">{{ModuleUtil.getDateText(selectDate)}}</picker>
+    <view class='add-text,add-first'>第一次</view>
+    <input class='add-text,add-input' value='{{content}}' placeholder-class='add-input-ph' maxlength='4' placeholder='(不能超过四个字)' bindinput='onContentChange' />
+    <view class='add-submit' bindtap='submit'>完成</view>
+  </view>
+</view>

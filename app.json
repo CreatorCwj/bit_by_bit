@@ -1,11 +1,12 @@
 {
   "pages": [
     "pages/login/login",
-    "pages/past/past",
     "pages/time/time",
     "pages/record/record",
     "pages/we/we",
-    "pages/newUpdRecord/newUpdRecord"
+    "pages/newUpdRecord/newUpdRecord",
+    "pages/past/past",
+    "pages/first/first"
   ],
   "window": {
     "backgroundTextStyle": "light",
