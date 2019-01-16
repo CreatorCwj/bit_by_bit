@@ -43,24 +43,20 @@ page {
   border-radius: 60rpx;
   margin-top: 59rpx;
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   position: relative;
 }
 
 .ui-con-bottom {
   background-color: white;
   border: 1rpx solid #bed4ec;
+  flex-direction: row;
 }
 
 .userinfo-desc-container {
   width: 50%;
   display: flex;
   flex-direction: column;
-  align-self: flex-end;
-}
-
-.ui-desc-con-right {
-  align-self: flex-start;
 }
 
 .custom-name {
