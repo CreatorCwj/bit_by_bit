@@ -6,8 +6,8 @@
   <image class='tip-image' src='../../resources/images/record_add_tip.png' mode='widthFix' />
 </view>
 <view class='grid-container'>
-  <block wx:for="{{dataList}}" wx:key="id">
-    <view class='item-container'>
+  <block wx:for="{{dataList}}" wx:key="objectId">
+    <view class='item-container' bindtap='onItemClick' data-item='{{item}}'>
       <view class='item-date'>{{ModuleUtil.getTime(item)}}</view>
       <view class='item-content'>{{item.content}}</view>
     </view>

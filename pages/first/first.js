@@ -12,6 +12,7 @@ Page({
     showAdd: false,
     selectDate: '',
     content: '',
+    editObj: null,
   },
 
   /**
@@ -27,8 +28,10 @@ Page({
   onPullDownRefresh: function() {
     wx.showNavigationBarLoading()
     var that = this
-    var query = new AV.Query('First');
-    query.equalTo('lovers', AV.Object.createWithoutData('Lovers', getApp().globalData.userData.self.lovers.objectId));
+    var query = new AV.Query('First')
+    query.equalTo('lovers', AV.Object.createWithoutData('Lovers', getApp().globalData.userData.self.lovers.objectId))
+    query.addAscending('date')
+    query.addDescending('createdAt')
     query.find().then(function(res) {
       wx.stopPullDownRefresh()
       wx.hideNavigationBarLoading()
@@ -47,7 +50,8 @@ Page({
     this.setData({
       showAdd: false,
       selectDate: '',
-      content: ''
+      content: '',
+      editObj: null,
     })
   },
 
@@ -55,7 +59,8 @@ Page({
     this.setData({
       showAdd: true,
       selectDate: '',
-      content: ''
+      content: '',
+      editObj: null,
     })
   },
 
@@ -87,26 +92,85 @@ Page({
       title: '提交中',
       mask: true,
     })
-    var record = new AV.Object('First')
-    record.set('lovers', AV.Object.createWithoutData('Lovers', getApp().globalData.userData.self.lovers.objectId))
-    record.set('date', this.data.selectDate)
-    record.set('content', this.data.content)
+    var first = this.data.editObj ? AV.Object.createWithoutData('First', this.data.editObj.objectId) : new AV.Object('First')
+    first.set('lovers', AV.Object.createWithoutData('Lovers', getApp().globalData.userData.self.lovers.objectId))
+    first.set('date', this.data.selectDate)
+    first.set('content', this.data.content)
     var that = this
-    record.save().then(function(res) {
+    first.save().then(function() {
       wx.hideNavigationBarLoading()
       wx.hideLoading()
       Util.showMsg('提交成功')
       that.setData({
         showAdd: false,
         selectDate: '',
-        content: ''
+        content: '',
+        editObj: null,
       })
       //列表页需要刷新
       wx.startPullDownRefresh()
-    }).catch(function(err) {
+    }).catch(function() {
       wx.hideNavigationBarLoading()
       wx.hideLoading()
       Util.showMsg('提交失败')
     })
-  }
+  },
+
+  onItemClick: function(event) {
+    var item = event.currentTarget.dataset.item
+    if (!item) {
+      return
+    }
+    var that = this
+    wx.showActionSheet({
+      itemList: ['编辑', '删除'],
+      success(res) {
+        switch (res.tapIndex) {
+          case 0:
+            that.editFirst(item)
+            break;
+          case 1:
+            that.deleteFirst(item.objectId)
+            break;
+        }
+      }
+    })
+  },
+
+  deleteFirst: function(objId) {
+    wx.showModal({
+      title: '提示',
+      content: '是否要删除记录?',
+      success: function(res) {
+        if (res.confirm) {
+          wx.showNavigationBarLoading()
+          wx.showLoading({
+            title: '删除中',
+            mask: true,
+          })
+          var first = AV.Object.createWithoutData('First', objId);
+          first.destroy().then(function() {
+            wx.hideNavigationBarLoading()
+            wx.hideLoading()
+            Util.showMsg('删除成功')
+            //列表页需要刷新
+            wx.startPullDownRefresh()
+          }).catch(function() {
+            wx.hideNavigationBarLoading()
+            wx.hideLoading()
+            Util.showMsg('删除失败')
+          })
+        }
+      }
+    })
+  },
+
+  editFirst: function(item) {
+    this.setData({
+      showAdd: true,
+      selectDate: new Date(item.date),
+      content: item.content,
+      editObj: item,
+    })
+  },
 })
