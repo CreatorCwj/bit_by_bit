@@ -20,7 +20,7 @@
         </view>
       </view>
       <view class='emotion-container' bindtap='selectEmotion' data-emotion-type='3'>
-        <text class='emotion-view,happy-text-color' animation='{{(emotionType&&emotionType==3)?txtDisAnimation:txtAppAnimation}}'>好\n开\n森</text>
+        <text class='emotion-view,happy-text-color' animation='{{(emotionType&&emotionType==3)?txtDisAnimation:txtAppAnimation}}'>好\n开\n森</text>
         <image class='emotion-image,happy-color' src='../../resources/images/emotion_happy.png' animation='{{(emotionType&&emotionType==3)?emoAppAnimation:emoDisAnimation}}' mode='aspectFit' />
       </view>
       <view class='emotion-container' bindtap='selectEmotion' data-emotion-type='2'>

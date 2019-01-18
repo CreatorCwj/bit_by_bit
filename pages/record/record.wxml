@@ -1,7 +1,7 @@
 <!--pages/record/record.wxml-->
 <wxs src='./record.wxs' module="ModuleUtil" />
 <view class='tip-container' hidden='{{(listItems&&listItems.length!=0)||(swiperItems&&swiperItems.length!=0)}}'>
-  <view class='tip-text,app-text-color'>快来添加你们的爱情史吧~~</view>
+  <view class='tip-text,app-text-color'>快来添加你们的爱情史吧~~</view>
   <image class='tip-image' src='../../resources/images/record_add_tip.png' mode='widthFix' />
 </view>
 <view class='record-container'>
@@ -9,13 +9,13 @@
     <block wx:for="{{swiperItems}}" wx:key="objectId">
       <swiper-item class='swiper-item-container'>
         <image src="{{ModuleUtil.getImageUrl(item)}}" class="swiper-image" mode='aspectFill' />
-        <view class='swiper-title-layer'>{{item.content}}</view>
+        <view class='swiper-title-layer'>{{item.content}}</view>
       </swiper-item>
     </block>
   </swiper>
   <block wx:for="{{listItems}}" wx:key="objectId">
     <view class='item-container'>
-      <text class='date'>{{ModuleUtil.getDateString(item.date)}}</text>
+      <text class='date'>{{ModuleUtil.getDateString(item.date)}}</text>
       <view class='timeline-container'>
         <view class='line' />
         <view class='emotion' style='background-color:{{ModuleUtil.getEmotionColor(item.emotion)}}' />
@@ -24,7 +24,7 @@
       <view class='content-container'>
         <view class='info-container'>
           <view class='item-publisher'>{{item.publisher.customName?item.publisher.customName:item.publisher.nickName}}：</view>
-          <view class='item-title'>{{item.content}}</view>
+          <view class='item-title'>{{item.content}}</view>
           <view class='place-container'>
             <image class='locate-icon' src='../../resources/images/locate.png' mode='aspectFit' />
             <view class='item-place'>{{item.place}}</view>

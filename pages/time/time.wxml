@@ -11,9 +11,9 @@
       <view class='days_container'>
         <image class='days_heart_left' src='../../resources/images/main_color_heart.png' />
         <picker class='text_container' mode="date" value="{{Util.getCurrentDate()}}" end="{{Util.getCurrentDate()}}" bindchange="selectDate">
-          <text class='normal_text'>{{daysPrefix}}</text>
+          <text class='normal_text'>{{daysPrefix}}</text>
           <text class='days_text' hidden='{{!hasDays}}'>{{days}}天</text>
-          <text class='normal_text' hidden='{{!hasDays}}'>不离不弃</text>
+          <text class='normal_text' hidden='{{!hasDays}}'>不离不弃</text>
         </picker>
         <image class='days_heart_right' src='../../resources/images/main_color_heart.png' />
       </view>
@@ -31,7 +31,7 @@
       </view>
       <view class='button_container'>
         <image class='button_img,app-bg-color' src='../../resources/images/future_icon.png' mode='aspectFit' />
-        <text class='btn_chinese_text'>未来</text>
+        <text class='btn_chinese_text'>未来</text>
         <text class='btn_english_text'>Future</text>
       </view>
     </view>

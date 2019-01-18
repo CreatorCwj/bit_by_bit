@@ -14,7 +14,7 @@
       <image class='right-bottom-heart' src='../../resources/images/heart.png' mode='aspectFit'></image>
     </view>
   </view>
-  <button class='share-btn-normal' open-type='share' hover-class='share-btn-click' disabled='{{disabled}}'>邀请另一半</button>
+  <button class='share-btn-normal' open-type='share' hover-class='share-btn-click' disabled='{{disabled}}'>邀请另一半</button>
 </view>
 <view class='auth-view' hidden='{{!showModal}}'>
   <view class='modal-container'>

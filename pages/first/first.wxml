@@ -2,7 +2,7 @@
 <wxs src='./first.wxs' module="ModuleUtil" />
 <wxs src='../../utils/util.wxs' module="Util" />
 <view class='tip-container' hidden='{{dataList&&dataList.length>0}}'>
-  <view class='tip-text,app-text-color'>快来添加你们的第一次吧~~</view>
+  <view class='tip-text,app-text-color'>快来添加你们的第一次吧~~</view>
   <image class='tip-image' src='../../resources/images/record_add_tip.png' mode='widthFix' />
 </view>
 <view class='grid-container'>

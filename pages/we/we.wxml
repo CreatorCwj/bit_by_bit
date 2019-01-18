@@ -24,8 +24,8 @@
       <view class='userinfo-desc-container'>
         <view class='custom-name,text-left'>{{ModuleUtil.getCustomName(loverData)}}</view>
         <view class='other-userinfo,text-left'>{{ModuleUtil.getBirthday(loverData)}}：生日</view>
-        <view class='other-userinfo,text-left'>{{ModuleUtil.getAnimal(loverData)}}：属相</view>
-        <view class='other-userinfo,text-left'>{{ModuleUtil.getConstellation(loverData)}}：星座</view>
+        <view class='other-userinfo,text-left'>{{ModuleUtil.getAnimal(loverData)}}：属相</view>
+        <view class='other-userinfo,text-left'>{{ModuleUtil.getConstellation(loverData)}}：星座</view>
         <view class='other-userinfo,text-left'>{{ModuleUtil.getExtraBySex(loverData,false)}}</view>
       </view>
       <image class='bottom-sex-image' src='{{ModuleUtil.getSexImage(loverData,false)}}' />
