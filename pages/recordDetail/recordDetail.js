@@ -20,8 +20,7 @@ Page({
 
   //点击图片预览
   previewImage: function(event) {
-    var that = this
-    var imageUrls = that.data.item.images.map(function(item) {
+    var imageUrls = this.data.item.images.map(function(item) {
       return item.url
     })
     wx.previewImage({
@@ -63,6 +62,9 @@ Page({
   },
 
   onEdit: function() {
-
+    var item = this.data.item
+    wx.navigateTo({
+      url: '/pages/newUpdRecord/newUpdRecord?item=' + encodeURIComponent(JSON.stringify(item))
+    })
   },
 })

@@ -35,9 +35,9 @@
     <textarea class='content-area' value='{{content}}' placeholder-class='area-placeholder' maxlength='-1' auto-height='{{false}}' placeholder='发生了些什么呢~' bindinput='contentChange' />
     <view class='images-container'>
       <block wx:if="{{imageUrls&&imageUrls.length>0}}">
-        <block wx:for="{{imageUrls}}" wx:key='*this'>
+        <block wx:for="{{imageUrls}}" wx:key='url'>
           <view class='image-container'>
-            <image class='image' src='{{item}}' mode='aspectFill' bindtap='previewImage' data-image-url='{{item}}' />
+            <image class='image' src='{{item.url}}' mode='aspectFill' bindtap='previewImage' data-image-url='{{item.url}}' />
             <image class='delete-image' src='../../resources/images/delete_image.png' mode='aspectFit' bindtap='deleteUrl' data-image-url-index='{{index}}' />
           </view>
         </block>
@@ -46,13 +46,13 @@
         <image class='add-image' src='../../resources/images/record_add_blue.png' mode='aspectFit' bindtap='addImage' />
       </block>
     </view>
-    <view class='switch-container'>
+    <view class='switch-container' hidden='{{objectId}}'>
       <image class='switch-icon' src='../../resources/images/first_icon_blue.png' mode='aspectFit' />
       <view class='switch-text'>第一次</view>
       <switch class='switch' type='switch' color='#9bcae6' checked='{{isFirst}}' bindchange='changeFirst' />
     </view>
-    <view class='switch-tip' hidden='{{isFirst}}'>设置"第一次"事件，会自动添加到"第一次"记录中哦~</view>
-    <view class='first-content-container' hidden='{{!isFirst}}'>
+    <view class='switch-tip' hidden='{{objectId||isFirst}}'>设置"第一次"事件，会自动添加到"第一次"记录中哦~</view>
+    <view class='first-content-container' hidden='{{objectId||!isFirst}}'>
       <view class='first-title'>标题：</view>
       <input class='first-input' value='{{firstContent}}' placeholder-class='first-input-placeholder' maxlength='4' placeholder='最多不能超过4个字~' bindinput='firstContentChange' />
     </view>

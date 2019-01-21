@@ -24,7 +24,7 @@
     <view class='content-area'>{{item.content}}</view>
     <view class='images-container'>
       <block wx:if="{{item.images&&item.images.length>0}}">
-        <block wx:for="{{item.images}}" wx:key='*this'>
+        <block wx:for="{{item.images}}" wx:key='url'>
           <image class='image' src='{{item.url}}' mode='aspectFill' bindtap='previewImage' data-image-url='{{item.url}}' />
         </block>
       </block>

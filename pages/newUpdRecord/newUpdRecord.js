@@ -20,6 +20,30 @@ Page({
     isFirst: false,
     firstContent: null,
     isImportant: false,
+    objectId: null,
+  },
+
+  onLoad: function(query) {
+    if (!query.item) {
+      wx.setNavigationBarTitle({
+        title: '发布点滴'
+      })
+      return
+    }
+    wx.setNavigationBarTitle({
+      title: '编辑点滴'
+    })
+    //编辑
+    var item = JSON.parse(decodeURIComponent(query.item))
+    this.setData({
+      objectId: item.objectId,
+      selectedDate: new Date(item.date),
+      place: item.place,
+      emotionType: item.emotion,
+      content: item.content,
+      isImportant: item.important,
+      imageUrls: item.images
+    })
   },
 
   //提交
@@ -50,7 +74,7 @@ Page({
       title: '提交中',
       mask: true,
     })
-    var record = new AV.Object('Records')
+    var record = this.data.objectId ? AV.Object.createWithoutData('Records', this.data.objectId) : new AV.Object('Records')
     record.set('publisher', AV.Object.createWithoutData('_User', getApp().globalData.userData.self.objectId))
     record.set('lovers', AV.Object.createWithoutData('Lovers', getApp().globalData.userData.self.lovers.objectId))
     record.set('date', this.data.selectedDate)
@@ -60,14 +84,15 @@ Page({
     record.set('isFirst', this.data.isFirst)
     record.set('firstContent', this.data.firstContent)
     record.set('important', this.data.isImportant)
-    var imageArr = (this.data.imageUrls && this.data.imageUrls.length > 0) ? this.data.imageUrls.map(function(url) {
-      return new AV.File('RecordImage', {
+    var imageArr = (this.data.imageUrls && this.data.imageUrls.length > 0) ? this.data.imageUrls.map(function(model) {
+      return model.objectId ? model : new AV.File('RecordImage', {
         blob: {
-          uri: url
+          uri: model.url
         }
       })
     }) : []
     record.set('images', imageArr)
+    var that = this
     record.save().then(function(res) {
       wx.hideNavigationBarLoading()
       wx.hideLoading()
@@ -75,9 +100,19 @@ Page({
       //列表页需要刷新
       getApp().globalData.refreshRecordList = true
       //跳转到详情页查看，携带过去item
-      wx.redirectTo({
-        url: '/pages/recordDetail/recordDetail?item=' + encodeURIComponent(JSON.stringify(res))
-      })
+      if (that.data.objectId) { //编辑页退回并刷新上一个详情页
+        var pages = getCurrentPages()
+        pages[pages.length - 2].setData({
+          item: res.toJSON()
+        })
+        wx.navigateBack({
+          delta: 1
+        })
+      } else { //新建页跳转到详情页并关闭自身
+        wx.redirectTo({
+          url: '/pages/recordDetail/recordDetail?item=' + encodeURIComponent(JSON.stringify(res))
+        })
+      }
     }).catch(function(err) {
       wx.hideNavigationBarLoading()
       wx.hideLoading()
@@ -107,7 +142,11 @@ Page({
       success: function(res) {
         if (res && res.tempFilePaths) {
           var urls = that.data.imageUrls ? that.data.imageUrls : []
-          urls = urls.concat(res.tempFilePaths)
+          urls = urls.concat(res.tempFilePaths.map(function(item) {
+            return {
+              url: item
+            }
+          }))
           that.setData({
             imageUrls: urls
           })
@@ -137,10 +176,12 @@ Page({
 
   //点击图片预览
   previewImage: function(event) {
-    var that = this
+    var imageUrls = this.data.imageUrls.map(function(item) {
+      return item.url
+    })
     wx.previewImage({
       current: event.currentTarget.dataset.imageUrl,
-      urls: that.data.imageUrls
+      urls: imageUrls
     })
   },
 
