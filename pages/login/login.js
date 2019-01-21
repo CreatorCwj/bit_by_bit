@@ -236,7 +236,7 @@ Page({
 
   jumpToMain: function() {
     wx.reLaunch({
-      url: '/pages/time/time'
+      url: '/pages/record/record'
     })
   }
 })

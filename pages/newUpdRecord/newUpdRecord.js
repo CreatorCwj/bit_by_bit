@@ -74,9 +74,9 @@ Page({
       Util.showMsg('提交成功')
       //列表页需要刷新
       getApp().globalData.refreshRecordList = true
-      //TODO:返回列表页刷新,后期应该改为跳转到详情页查看，携带过去res.id
-      wx.navigateBack({
-        delta: 1
+      //跳转到详情页查看，携带过去item
+      wx.redirectTo({
+        url: '/pages/recordDetail/recordDetail?item=' + encodeURIComponent(JSON.stringify(res))
       })
     }).catch(function(err) {
       wx.hideNavigationBarLoading()

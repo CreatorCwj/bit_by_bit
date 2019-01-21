@@ -7,14 +7,14 @@
 <view class='record-container'>
   <swiper class='swiper' hidden='{{!swiperItems||swiperItems.length==0}}' indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3500}}" circular="{{true}}" indicator-color="#a9bbd3" indicator-active-color="#fff">
     <block wx:for="{{swiperItems}}" wx:key="objectId">
-      <swiper-item class='swiper-item-container'>
+      <swiper-item class='swiper-item-container' data-item='{{item}}' bindtap='onItemClick'>
         <image src="{{ModuleUtil.getImageUrl(item)}}" class="swiper-image" mode='aspectFill' />
         <view class='swiper-title-layer'>{{item.content}}</view>
       </swiper-item>
     </block>
   </swiper>
   <block wx:for="{{listItems}}" wx:key="objectId">
-    <view class='item-container'>
+    <view class='item-container' data-item='{{item}}' bindtap='onItemClick'>
       <text class='date'>{{ModuleUtil.getDateString(item.date)}}</text>
       <view class='timeline-container'>
         <view class='line' />

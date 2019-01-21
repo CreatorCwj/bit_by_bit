@@ -82,5 +82,12 @@ Page({
     wx.navigateTo({
       url: '/pages/newUpdRecord/newUpdRecord'
     })
+  },
+
+  onItemClick: function(event) {
+    var item = event.currentTarget.dataset.item
+    wx.navigateTo({
+      url: '/pages/recordDetail/recordDetail?item=' + encodeURIComponent(JSON.stringify(item))
+    })
   }
 })

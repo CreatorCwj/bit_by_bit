@@ -1,0 +1,37 @@
+<!--pages/recordDetail/recordDetail.wxml-->
+<wxs src='./recordDetail.wxs' module="ModuleUtil" />
+<wxs src='../../utils/util.wxs' module="Util" />
+<view class='container'>
+  <view class='column-line' />
+  <view class='column-container'>
+    <view class='header-container'>
+      <text class='header-text' space='emsp'>我们的\n故 事</text>
+      <view class='header-line' />
+    </view>
+    <view class='date-place-emotion-container'>
+      <view class='date-place-container'>
+        <view class='dp-row-container'>
+          <image class='dp-image' src='../../resources/images/calendar.png' mode='aspectFit' />
+          <view class='dp-text-picker'>{{ModuleUtil.getFormatDate(item)}}</view>
+        </view>
+        <view class='dp-row-container'>
+          <image class='dp-image' src='../../resources/images/locate_white.png' mode='aspectFit' />
+          <view class='place-input'>{{item.place}}</view>
+        </view>
+      </view>
+      <image class='emotion-image' style='background-color:{{ModuleUtil.getEmotionColor(item)}}' src='{{ModuleUtil.getEmotionImage(item)}}' mode='aspectFit' />
+    </view>
+    <view class='content-area'>{{item.content}}</view>
+    <view class='images-container'>
+      <block wx:if="{{item.images&&item.images.length>0}}">
+        <block wx:for="{{item.images}}" wx:key='*this'>
+          <image class='image' src='{{item.url}}' mode='aspectFill' bindtap='previewImage' data-image-url='{{item.url}}' />
+        </block>
+      </block>
+    </view>
+    <view class='btn-container'>
+      <view class='btn' bindtap='onDelete'>删除</view>
+      <view class='btn' bindtap='onEdit'>编辑</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,41 @@
+var Util = require('../../utils/util.wxs')
+
+var getFormatDate = function(item) {
+  return Util.getFormatDate(getDate(item.date), {
+    spliter: '.',
+  })
+}
+
+var getEmotionColor = function(item) {
+  switch (item.emotion) {
+    case 1:
+      return '#58b2dc'
+      break;
+    case 2:
+      return '#f9bf45'
+      break;
+    case 3:
+      return '#f596aa'
+      break;
+  }
+}
+
+var getEmotionImage = function(item) {
+  switch (item.emotion) {
+    case 1:
+      return '../../resources/images/emotion_sad.png'
+      break;
+    case 2:
+      return '../../resources/images/emotion_normal.png'
+      break;
+    case 3:
+      return '../../resources/images/emotion_happy.png'
+      break;
+  }
+}
+
+module.exports = {
+  getFormatDate: getFormatDate,
+  getEmotionColor: getEmotionColor,
+  getEmotionImage: getEmotionImage,
+}

@@ -1,0 +1,143 @@
+/* pages/recordDetail/recordDetail.wxss */
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.column-line {
+  width: 2rpx;
+  background-color: #dee9f5;
+  margin: 177rpx 44rpx 0rpx 44rpx;
+}
+
+.column-container {
+  flex: 1;
+  width: 0%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 36rpx 0rpx 17rpx 0rpx;
+}
+
+.header-text {
+  font-size: 28rpx;
+  line-height: 62rpx;
+  color: #bfd5ed;
+  letter-spacing: 5rpx;
+  text-align: center;
+}
+
+.header-line {
+  flex: 1;
+  width: 0%;
+  height: 2rpx;
+  background-color: #dee9f5;
+  margin-left: 190rpx;
+}
+
+.date-place-emotion-container {
+  width: 100%;
+  background-color: #bfd5ed;
+  display: flex;
+  flex-direction: row;
+}
+
+.emotion-image {
+  width: 100rpx;
+  height: 140rpx;
+  box-sizing: border-box;
+  padding: 50rpx 30rpx 50rpx 30rpx;
+}
+
+.date-place-container {
+  width: 0%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 21rpx;
+  box-sizing: border-box;
+}
+
+.dp-row-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dp-image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+.dp-text-picker {
+  flex: 1;
+  width: 0%;
+  font-size: 29rpx;
+  color: white;
+}
+
+.place-input {
+  flex: 1;
+  width: 0%;
+  font-size: 29rpx;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content-area {
+  width: 100%;
+  color: black;
+  font-size: 29rpx;
+  padding: 21rpx;
+  border-left: 2rpx solid #d3e3f3;
+  box-sizing: border-box;
+}
+
+.images-container {
+  width: 100%;
+  box-sizing: border-box;
+  border-left: 2rpx solid #d3e3f3;
+  border-bottom: 2rpx solid #d3e3f3;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  justify-content: space-around;
+}
+
+.image {
+  margin-bottom: 10rpx;
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin: 50rpx 0 50rpx 0;
+}
+
+.btn {
+  padding: 15rpx 50rpx 15rpx 50rpx;
+  background-color: #bed4ec;
+  border-radius: 10rpx;
+  border: 2rpx solid white;
+  box-shadow: 0 0 2rpx #768899;
+  color: white;
+  font-size: 33rpx;
+  text-align: center;
+}
