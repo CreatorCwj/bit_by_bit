@@ -28,7 +28,7 @@ var getFormatDate = function(date, spliterOptions, attrOptions) {
   if (spliterOptions.useCn) {
     return '' + ((attrOptions && attrOptions.excYear) ? '' : (year + '年')) + ((attrOptions && attrOptions.excMonth) ? '' : (month + '月')) + ((attrOptions && attrOptions.excDay) ? '' : (day + '日'))
   } else {
-    return '' + ((attrOptions && attrOptions.excYear) ? '' : (year + spliterOptions.spliter)) + ((attrOptions && attrOptions.excMonth) ? '' : (month + spliterOptions.spliter)) + ((attrOptions && attrOptions.excDay) ? '' : day)
+    return '' + ((attrOptions && attrOptions.excYear) ? '' : year) + ((attrOptions && (attrOptions.excYear || attrOptions.excMonth)) ? '' : spliterOptions.spliter) + ((attrOptions && attrOptions.excMonth) ? '' : month) + ((attrOptions && (attrOptions.excMonth || attrOptions.excDay)) ? '' : spliterOptions.spliter) + ((attrOptions && attrOptions.excDay) ? '' : day)
   }
 }
 

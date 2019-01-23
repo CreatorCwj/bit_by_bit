@@ -7,7 +7,8 @@
     "pages/newUpdRecord/newUpdRecord",
     "pages/past/past",
     "pages/first/first",
-    "pages/recordDetail/recordDetail"
+    "pages/recordDetail/recordDetail",
+    "pages/future/future"
   ],
   "window": {
     "backgroundTextStyle": "light",

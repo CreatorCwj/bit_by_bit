@@ -20,7 +20,7 @@
     <view class='add-text'>时间</view>
     <picker class='add-text,add-date' style='color:{{ModuleUtil.getDateFontColor(selectDate)}}' mode="date" value="{{Util.getCurrentDate()}}" end="{{Util.getCurrentDate()}}" bindchange="onDateSelect">{{ModuleUtil.getDateText(selectDate)}}</picker>
     <view class='add-text,add-first'>第一次</view>
-    <input class='add-text,add-input' value='{{content}}' placeholder-class='add-input-ph' maxlength='4' placeholder='(不能超过四个字)' bindinput='onContentChange' />
+    <input class='add-text,add-input' value='{{content}}' placeholder-class='add-input-ph' maxlength='4' placeholder='(不能超过4个字)' bindinput='onContentChange' />
     <view class='add-submit' bindtap='submit'>完成</view>
   </view>
 </view>

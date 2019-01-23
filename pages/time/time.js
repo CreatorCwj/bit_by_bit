@@ -122,5 +122,11 @@ Page({
     wx.navigateTo({
       url: '/pages/first/first'
     })
+  },
+
+  gotoFuture: function() {
+    wx.navigateTo({
+      url: '/pages/future/future'
+    })
   }
 })

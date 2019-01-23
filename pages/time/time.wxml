@@ -29,7 +29,7 @@
         <text class='btn_chinese_text'>第一次</text>
         <text class='btn_english_text'>First</text>
       </view>
-      <view class='button_container'>
+      <view class='button_container' bindtap='gotoFuture'>
         <image class='button_img,app-bg-color' src='../../resources/images/future_icon.png' mode='aspectFit' />
         <text class='btn_chinese_text'>未来</text>
         <text class='btn_english_text'>Future</text>

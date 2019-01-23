@@ -1,0 +1,58 @@
+var Util = require('../../utils/util.wxs')
+
+var getFlagText = function(item, isPlan) {
+  if (isPlan) {
+    return ''
+  }
+  switch (item.status) {
+    case 1:
+      return '未完成'
+    case 2:
+      return '已完成'
+  }
+  return ''
+}
+
+var getContent = function(item) {
+  return Util.getFormatDate(getDate(item.date), {
+    spliter: '.',
+  }, {
+    excDay: true,
+  }) + ' - ' + item.content
+}
+
+var getDataList = function(dataList, isPlan) {
+  if (!dataList) return []
+  if (isPlan) {
+    return dataList.filter(function(item) {
+      return item.status == 0
+    })
+  } else {
+    return dataList.filter(function(item) {
+      return item.status != 0
+    }).reverse()
+  }
+}
+
+var getDateText = function(date) {
+  if (!date) {
+    return '请选择日期'
+  }
+  return Util.getFormatDate(getDate(date), {
+    spliter: '.',
+  }, {
+    excDay: true,
+  })
+}
+
+var getDateFontColor = function(date) {
+  return !date ? '#afabac' : 'black'
+}
+
+module.exports = {
+  getDateText: getDateText,
+  getDateFontColor: getDateFontColor,
+  getFlagText: getFlagText,
+  getContent: getContent,
+  getDataList: getDataList,
+}

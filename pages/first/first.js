@@ -31,7 +31,7 @@ Page({
     var query = new AV.Query('First')
     query.equalTo('lovers', AV.Object.createWithoutData('Lovers', getApp().globalData.userData.self.lovers.objectId))
     query.addAscending('date')
-    query.addDescending('createdAt')
+    query.addAscending('createdAt')
     query.find().then(function(res) {
       wx.stopPullDownRefresh()
       wx.hideNavigationBarLoading()

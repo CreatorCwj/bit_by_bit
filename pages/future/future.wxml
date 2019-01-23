@@ -1,0 +1,32 @@
+<!--pages/future/future.wxml-->
+<wxs src='./future.wxs' module="ModuleUtil" />
+<wxs src='../../utils/util.wxs' module="Util" />
+<view class='tip-container' hidden='{{dataList&&dataList.length>0}}'>
+  <view class='tip-text,app-text-color'>快来添加你们的计划吧~~</view>
+  <image class='tip-image' src='../../resources/images/record_add_tip.png' mode='widthFix' />
+</view>
+<image class='add-image' animation='{{(isPlan||!dataList||dataList.length==0)?addAppAnimation:addDisAnimation}}' src='../../resources/images/record_add.png' mode='aspectFit' bindtap='addFuture' />
+<view class='tab-container' hidden='{{!dataList||dataList.length==0}}'>
+  <view class="tab-item" style="color:{{isPlan?'#9ec4e4':'grey'}}" bindtap='onTabItemClick' data-is-plan='true'>计划</view>
+  <view class="tab-item" style="color:{{isPlan?'grey':'#9ec4e4'}}" bindtap='onTabItemClick' data-is-plan='false'>历史</view>
+</view>
+<view class='divider' hidden='{{!dataList||dataList.length==0}}'>
+  <view class='float-line' animation='{{floatAnimation}}' />
+</view>
+<block wx:for="{{ModuleUtil.getDataList(dataList,isPlan)}}" wx:key="objectId">
+  <view class='item-container' bindtap='onItemClick' data-item='{{item}}'>
+    <view class='flag-view' hidden='{{isPlan}}'>{{ModuleUtil.getFlagText(item,isPlan)}}</view>
+    <view class='flag-line' hidden='{{isPlan}}' />
+    <view class='item-text' style="color:{{isPlan?'black':'#d0cecf'}}">{{ModuleUtil.getContent(item)}}</view>
+  </view>
+</block>
+<view class='add-view' hidden='{{!showAdd}}'>
+  <view class='add-container'>
+    <image class='cancel-image' src='../../resources/images/delete_image.png' mode='aspectFit' bindtap='onCancelClick' />
+    <view class='add-text'>时间</view>
+    <picker class='add-text,add-date' style='color:{{ModuleUtil.getDateFontColor(selectDate)}}' mode="date" fields='month' value="{{Util.getCurrentDate()}}" bindchange="onDateSelect">{{ModuleUtil.getDateText(selectDate)}}</picker>
+    <view class='add-text,add-first'>计划</view>
+    <input class='add-text,add-input' value='{{content}}' placeholder-class='add-input-ph' maxlength='10' placeholder='(不能超过10个字)' bindinput='onContentChange' />
+    <view class='add-submit' bindtap='submit'>完成</view>
+  </view>
+</view>
