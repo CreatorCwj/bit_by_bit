@@ -67,8 +67,12 @@ Page({
   customNameDone: function(event) {
     var that = this
     var customName = event.detail.value
-    if (!customName) {
-      customName = ''
+    if (!customName || !customName.trim()) {
+      Util.showMsg('请输入正确的昵称~')
+      this.setData({
+        selfData: this.data.selfData,
+      })
+      return
     }
     wx.showModal({
       title: '提示',

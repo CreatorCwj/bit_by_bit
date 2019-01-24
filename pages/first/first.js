@@ -82,7 +82,7 @@ Page({
       Util.showMsg('要选择日期哦~')
       return
     }
-    if (!this.data.content) {
+    if (!this.data.content || !this.data.content.trim()) {
       Util.showMsg('要填写内容哦~')
       return
     }
