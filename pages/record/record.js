@@ -7,10 +7,34 @@ Page({
 
   data: {
     swiperItems: [],
-    listItems: []
+    listItems: [],
+    searchContent: '',
+    isSearch: false,
+    searchAppAnimation: wx.createAnimation({
+      duration: 200
+    }).width('200rpx').step().export(),
+    searchDisAnimation: wx.createAnimation({
+      duration: 200
+    }).width('0rpx').step().export(),
   },
 
   onLoad: function(options) {
+    wx.startPullDownRefresh()
+  },
+
+  onSearchClick: function() {
+    if (this.data.isSearch) return
+    this.setData({
+      isSearch: true
+    })
+  },
+
+  onSearchOk: function(event) {
+    var content = event.detail.value
+    this.setData({
+      searchContent: (!content || !content.trim()) ? '' : content,
+      isSearch: !(!content || !content.trim()),
+    })
     wx.startPullDownRefresh()
   },
 
@@ -32,6 +56,7 @@ Page({
     AV.Cloud.run('getDataList', {
       objId: getApp().globalData.userData.self.lovers.objectId,
       important: true,
+      searchContent: this.data.searchContent,
       pageNo: currentPageNo
     }).then(function(res) {
       wx.stopPullDownRefresh()
@@ -58,6 +83,7 @@ Page({
     AV.Cloud.run('getDataList', {
       objId: getApp().globalData.userData.self.lovers.objectId,
       important: false,
+      searchContent: this.data.searchContent,
       pageNo: currentPageNo
     }).then(function(res) {
       wx.hideNavigationBarLoading()

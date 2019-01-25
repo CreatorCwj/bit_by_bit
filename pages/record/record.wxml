@@ -34,5 +34,9 @@
       </view>
     </view>
   </block>
+  <view class='search-container' bindtap='onSearchClick' hidden='{{!swiperItems||swiperItems.length==0}}'>
+    <image src="../../resources/images/search.png" class="search-icon" mode='aspectFit' />
+    <input class='search-input' placeholder-class='search-pl' value='{{searchContent}}' animation='{{isSearch?searchAppAnimation:searchDisAnimation}}' maxlength='-1' placeholder='地点、内容' bindconfirm='onSearchOk' focus='{{isSearch}}' />
+  </view>
 </view>
 <image class='add-image' src='../../resources/images/record_add.png' mode='aspectFit' bindtap='addRecord' />

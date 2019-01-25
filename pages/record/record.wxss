@@ -44,6 +44,37 @@ page {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  right: 45rpx;
+  top: 15rpx;
+  background-color: white;
+  border-radius: 50rpx;
+  padding: 0 10rpx 0 20rpx;
+}
+
+.search-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.search-input {
+  font-size: 22rpx;
+  margin-left: 10rpx;
+  border-top-right-radius: 50rpx;
+  border-bottom-right-radius: 50rpx;
+  width: 0rpx;
+  color: black;
+}
+
+.search-pl {
+  color: grey;
 }
 
 .swiper {
