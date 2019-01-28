@@ -24,7 +24,7 @@
       <view class='content-container'>
         <view class='info-container'>
           <view class='item-publisher'>{{item.publisher.customName?item.publisher.customName:item.publisher.nickName}}：</view>
-          <view class='item-title'>{{item.content}}</view>
+          <text class='item-title' space='nbsp'>{{item.content}}</text>
           <view class='place-container'>
             <image class='locate-icon' src='../../resources/images/locate.png' mode='aspectFit' />
             <view class='item-place'>{{item.place}}</view>

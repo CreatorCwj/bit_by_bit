@@ -21,7 +21,7 @@
       </view>
       <image class='emotion-image' style='background-color:{{ModuleUtil.getEmotionColor(item)}}' src='{{ModuleUtil.getEmotionImage(item)}}' mode='aspectFit' />
     </view>
-    <view class='content-area'>{{item.content}}</view>
+    <text class='content-area' space='nbsp'>{{item.content}}</text>
     <view class='images-container'>
       <block wx:if="{{item.images&&item.images.length>0}}">
         <block wx:for="{{item.images}}" wx:key='url'>

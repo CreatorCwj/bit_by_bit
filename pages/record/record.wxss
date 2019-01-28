@@ -186,6 +186,7 @@ page {
 }
 
 .item-title {
+  height: 38rpx;
   font-size: 28rpx;
   color: black;
   text-overflow: ellipsis;
