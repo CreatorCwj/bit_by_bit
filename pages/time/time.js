@@ -42,6 +42,13 @@ Page({
     })
   },
 
+  onWallPaperClick: function() {
+    wx.previewImage({
+      current: this.data.wallPaperUrl,
+      urls: [this.data.wallPaperUrl]
+    })
+  },
+
   selectWallPaper: function() {
     var that = this
     wx.chooseImage({

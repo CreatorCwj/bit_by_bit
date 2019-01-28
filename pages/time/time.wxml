@@ -5,7 +5,7 @@
   <view class='content_container'>
     <view class='image_outer_container'>
       <view class='image_container'>
-        <image class='photo_image' src='{{wallPaperUrl}}' mode='aspectFill' />
+        <image class='photo_image' src='{{wallPaperUrl}}' mode='aspectFill' bindtap='onWallPaperClick'/>
         <image class='take_photo_image' src='../../resources/images/take_photo.png' mode='aspectFit' bindtap='selectWallPaper' />
       </view>
       <view class='days_container'>
