@@ -84,16 +84,22 @@ page {
   margin-bottom: 30rpx;
 }
 
-.swiper-title-layer {
+.swiper-layer-container {
   width: 100%;
   height: 105rpx;
   position: absolute;
   bottom: 0;
   background-color: rgba(185, 211, 238, 0.5);
-  font-size: 33rpx;
-  color: white;
   padding: 10rpx;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.swiper-title-layer {
+  height: 43rpx;
+  font-size: 33rpx;
+  color: white;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
