@@ -16,6 +16,7 @@ App({
   globalData: {
     realtime: realtime,
     refreshRecordList: false,
+    refreshRecordSearch: false,
     userData: null,
   }
 })

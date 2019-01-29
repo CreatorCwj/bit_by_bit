@@ -1,4 +1,4 @@
-// pages/record/record.js
+// pages/searchRecord/searchRecord.js
 const AV = require('../../libs/av-weapp-min.js')
 const Util = require('../../utils/util.js')
 var currentPageNo = 1
@@ -6,52 +6,58 @@ var currentPageNo = 1
 Page({
 
   data: {
-    swiperItems: [],
     listItems: [],
+    searchContent: '',
   },
 
-  onLoad: function(options) {
-    wx.startPullDownRefresh()
-  },
-
-  onSearchClick: function() {
-    wx.navigateTo({
-      url: '/pages/searchRecord/searchRecord'
-    })
+  onLoad: function() {
+    //reset
+    getApp().globalData.refreshRecordSearch = false
   },
 
   onShow: function() {
-    var needRefresh = getApp().globalData.refreshRecordList
-    if (needRefresh) {
-      getApp().globalData.refreshRecordList = false
-      wx.startPullDownRefresh()
+    if (getApp().globalData.refreshRecordSearch && this.data.searchContent) {
+      this.search()
     }
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
+  search: function() {
     currentPageNo = 1 //reset pageNo
     wx.showNavigationBarLoading()
+    wx.showLoading({
+      title: '搜索中',
+      mask: true,
+    })
     var that = this
     AV.Cloud.run('getDataList', {
       objId: getApp().globalData.userData.self.lovers.objectId,
-      important: true,
+      important: false,
+      searchContent: this.data.searchContent,
       pageNo: currentPageNo
     }).then(function(res) {
-      wx.stopPullDownRefresh()
       wx.hideNavigationBarLoading()
+      wx.hideLoading()
       //更新View
       that.setData({
-        swiperItems: res.importants,
         listItems: res.dataList
       })
     }).catch(function() {
-      wx.stopPullDownRefresh()
       wx.hideNavigationBarLoading()
+      wx.hideLoading()
       Util.showMsg('数据请求失败')
     })
+  },
+
+  onSearchOk: function(event) {
+    var content = event.detail.value
+    if (!content || !content.trim()) {
+      Util.showMsg('请输入正确的搜索内容')
+      return
+    }
+    this.setData({
+      searchContent: content,
+    })
+    this.search()
   },
 
   /**
@@ -64,6 +70,7 @@ Page({
     AV.Cloud.run('getDataList', {
       objId: getApp().globalData.userData.self.lovers.objectId,
       important: false,
+      searchContent: this.data.searchContent,
       pageNo: currentPageNo
     }).then(function(res) {
       wx.hideNavigationBarLoading()
@@ -81,12 +88,6 @@ Page({
       --currentPageNo //reset pageNo
       wx.hideNavigationBarLoading()
       Util.showMsg('数据请求失败')
-    })
-  },
-
-  addRecord: function() {
-    wx.navigateTo({
-      url: '/pages/newUpdRecord/newUpdRecord'
     })
   },
 

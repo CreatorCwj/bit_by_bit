@@ -99,6 +99,8 @@ Page({
       Util.showMsg('提交成功')
       //列表页需要刷新
       getApp().globalData.refreshRecordList = true
+      //搜索页需要刷新
+      getApp().globalData.refreshRecordSearch = true
       //跳转到详情页查看，携带过去item
       if (that.data.objectId) { //编辑页退回并刷新上一个详情页
         var pages = getCurrentPages()

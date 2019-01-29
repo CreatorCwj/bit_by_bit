@@ -48,6 +48,8 @@ Page({
             Util.showMsg('删除成功')
             //返回上一页刷新
             getApp().globalData.refreshRecordList = true
+            //搜索页需要刷新
+            getApp().globalData.refreshRecordSearch = true
             wx.navigateBack({
               delta: 1
             })

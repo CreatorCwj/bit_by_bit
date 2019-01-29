@@ -1,0 +1,28 @@
+<!--pages/searchRecord/searchRecord.wxml-->
+<wxs src='../record/record.wxs' module="ModuleUtil" />
+<view class='tip-text,app-text-color' hidden='{{listItems&&listItems.length>0}}'>没有找到相关记录哦~~</view>
+<view class='search-container'>
+  <input class='search-input' placeholder-class='search-pl' value='{{searchContent}}' maxlength='-1' placeholder='地点、内容' bindconfirm='onSearchOk' focus='{{true}}' />
+  <image src="../../resources/images/search.png" class="search-icon" mode='aspectFit' />
+</view>
+<block wx:for="{{listItems}}" wx:key="objectId">
+  <view class='item-container' data-item='{{item}}' bindtap='onItemClick'>
+    <text class='date'>{{ModuleUtil.getDateString(item.date)}}</text>
+    <view class='timeline-container'>
+      <view class='line' />
+      <view class='emotion' style='background-color:{{ModuleUtil.getEmotionColor(item.emotion)}}' />
+    </view>
+    <view class='arrow' />
+    <view class='content-container'>
+      <view class='info-container'>
+        <view class='item-publisher'>{{item.publisher.customName?item.publisher.customName:item.publisher.nickName}}：</view>
+        <text class='item-title' space='nbsp'>{{item.content}}</text>
+        <view class='place-container'>
+          <image class='locate-icon' src='../../resources/images/locate.png' mode='aspectFit' />
+          <view class='item-place'>{{item.place}}</view>
+        </view>
+      </view>
+      <image class='item-img' src='{{ModuleUtil.getImageUrl(item)}}' mode='aspectFill' />
+    </view>
+  </view>
+</block>
